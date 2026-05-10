@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Technical Lab</title>
+    <title>Smyrna & Sable | Technical Data Lab</title>
     
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -22,17 +22,17 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-T2WT39X9');</script>
-
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; background-color: #f8f9fa; color: var(--primary); }
-        .lab-card { background: white; padding: 3rem; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 600px; width: 90%; }
-        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; letter-spacing: -1px; }
-        .badge { background: #e1f5fe; color: var(--accent); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
-        p { line-height: 1.6; color: #5f6368; margin: 1.5rem 0; }
-        .tech-stack { display: flex; justify-content: center; gap: 10px; margin-top: 2rem; }
-        .tag { border: 1px solid #ddd; padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; background: #fff; }
-        .btn { display: inline-block; margin-top: 1rem; padding: 10px 25px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; }
+        :root { --primary: #2c3e50; --accent: #3498db; --bg: #f8f9fa; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--primary); margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+        .container { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; width: 90%; text-align: center; }
+        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
+        h2 { color: var(--accent); font-weight: 400; margin-top: 0; }
+        .status-box { background: #e8f4fd; border-left: 4px solid var(--accent); padding: 1rem; margin: 2rem 0; text-align: left; }
+        .badge { background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
+        p { line-height: 1.6; color: #5a6c7d; }
+        .footer-note { font-size: 0.85rem; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; font-style: italic; }
+        .btn { display: inline-block; margin-top: 1rem; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; }
         .btn:hover { background: var(--accent); }
     </style>
 </head>
@@ -40,31 +40,28 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2WT39X9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div class="lab-card">
-        <span class="badge">Technical Environment</span>
+    <div class="container">
         <h1>Smyrna & Sable</h1>
-        <h3>Data & Analytics Lab</h3>
+        <h2>Technical Analytics Lab</h2>
         
-        <p>This sandbox environment is designed to demonstrate advanced tracking implementations, 
-           <strong>Consent Mode V2</strong> compliance, and custom GTM architectures.</p>
-        
-        <div class="tech-stack">
-            <span class="tag">GTM-T2WT39X9</span>
-            <span class="tag">GA4</span>
-            <span class="tag">GDPR Ready</span>
-            <span class="tag">Python Automations</span>
+        <p>This environment is a specialized sandbox for testing data architectures, tracking implementations, and advanced marketing automation workflows.</p>
+
+        <div class="status-box">
+            <strong>Technical Stack:</strong>
+            <ul style="list-style: none; padding: 0; margin-top: 10px;">
+                <li>✅ Google Tag Manager <span class="badge">Active</span></li>
+                <li>✅ Consent Mode V2 <span class="badge">GDPR Ready</span></li>
+                <li>✅ Custom DataLayer Events</li>
+            </ul>
         </div>
 
-        <a href="https://www.linkedin.com" target="_blank" class="btn">Connect on LinkedIn</a>
-    </div>
+        <p>Currently monitoring tracking precision and cross-domain behavior for professional certification purposes.</p>
+        
+        <a href="https://www.smyrnaandsable.com" class="btn">Visit Main Portfolio</a>
 
-    <script>
-        // DataLayer push for testing
-        window.dataLayer.push({
-            'event': 'lab_page_view',
-            'page_type': 'technical_sandbox',
-            'environment': 'github_pages'
-        });
-    </script>
+        <div class="footer-note">
+            Status: Container GTM-T2WT39X9 | Environment: Production
+        </div>
+    </div>
 </body>
 </html>
