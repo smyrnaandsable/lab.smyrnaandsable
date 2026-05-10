@@ -9,6 +9,7 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         
+        // Defaulting to 'denied' for GDPR compliance
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -23,45 +24,48 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-T2WT39X9');</script>
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --bg: #f8f9fa; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--primary); margin: 0; display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-        .container { background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 600px; width: 90%; text-align: center; }
-        h1 { margin-bottom: 0.5rem; font-size: 2.2rem; border-bottom: 2px solid var(--accent); display: inline-block; padding-bottom: 5px; }
-        h2 { color: var(--accent); font-weight: 400; margin-top: 0; }
-        .status-box { background: #e8f4fd; border-left: 4px solid var(--accent); padding: 1rem; margin: 2rem 0; text-align: left; }
-        .badge { background: #27ae60; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem; }
-        p { line-height: 1.6; color: #5a6c7d; }
-        .footer-note { font-size: 0.85rem; margin-top: 2rem; border-top: 1px solid #eee; padding-top: 1rem; font-style: italic; }
-        .btn { display: inline-block; margin-top: 1rem; padding: 10px 20px; background: var(--primary); color: white; text-decoration: none; border-radius: 5px; transition: 0.3s; }
-        .btn:hover { background: var(--accent); }
+        :root { --primary: #2c3e50; --accent: #3498db; --text: #333; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: var(--text); background: #f8f9fa; margin: 0; padding: 0; }
+        header { background: var(--primary); color: white; padding: 2rem 1rem; text-align: center; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .badge { display: inline-block; padding: 0.5rem 1rem; background: #e8f4fd; color: var(--accent); border-radius: 20px; font-weight: bold; font-size: 0.9rem; margin-bottom: 1rem; }
+        .btn { display: inline-block; background: var(--accent); color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 5px; margin-top: 1rem; cursor: pointer; border: none; }
+        .btn:hover { background: #2980b9; }
+        .status-box { background: #eee; padding: 1rem; border-left: 4px solid var(--primary); margin-top: 2rem; font-family: monospace; font-size: 0.85rem; }
+        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #7f8c8d; }
     </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2WT39X9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div class="container">
+    <header>
         <h1>Smyrna & Sable</h1>
-        <h2>Technical Analytics Lab</h2>
-        
-        <p>This environment is a specialized sandbox for testing data architectures, tracking implementations, and advanced marketing automation workflows.</p>
+        <p>Technical Measurement & Analytics Laboratory</p>
+    </header>
 
+    <div class="container">
+        <span class="badge">ENVIRONMENT: PRODUCTION</span>
+        <h2>Technical Proof of Concept</h2>
+        <p>This environment is designed to showcase <b>Google Tag Manager (GTM)</b> implementations, <b>Consent Mode V2</b> configurations, and <b>DataLayer</b> architecture.</p>
+        
+        <hr>
+
+        <h3>Tracking Sandbox</h3>
+        <p>Click the buttons below to trigger GTM events and observe data flow in the console.</p>
+        <button class="btn" onclick="dataLayer.push({'event': 'test_event', 'event_category': 'sandbox', 'event_label': 'button_1'})">Trigger Test Event</button>
+        
         <div class="status-box">
-            <strong>Technical Stack:</strong>
-            <ul style="list-style: none; padding: 0; margin-top: 10px;">
-                <li>✅ Google Tag Manager <span class="badge">Active</span></li>
-                <li>✅ Consent Mode V2 <span class="badge">GDPR Ready</span></li>
-                <li>✅ Custom DataLayer Events</li>
-            </ul>
+            Container ID: GTM-T2WT39X9 <br>
+            Compliance: GDPR / Consent Mode V2 Ready <br>
+            Status: Active
         </div>
 
-        <p>Currently monitoring tracking precision and cross-domain behavior for professional certification purposes.</p>
-        
-        <a href="https://www.smyrnaandsable.com" class="btn">Visit Main Portfolio</a>
-
-        <div class="footer-note">
-            Status: Container GTM-T2WT39X9 | Environment: Production
-        </div>
+        <a href="https://www.linkedin.com" target="_blank" class="btn" style="background: #2c3e50;">Connect on LinkedIn</a>
     </div>
+
+    <footer>
+        &copy; 2026 Smyrna & Sable - Data Driven Marketing Strategist
+    </footer>
 </body>
 </html>
