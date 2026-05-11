@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smyrna & Sable | Technical Data Lab</title>
@@ -8,8 +14,6 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        
-        // Default Consent: All denied for European Privacy Standards
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -18,11 +22,6 @@
         });
     </script>
 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
         .card { background: #161b22; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 550px; width: 90%; text-align: center; border: 1px solid #30363d; }
@@ -42,12 +41,12 @@
     <div class="card">
         <h1>Smyrna & Sable</h1>
         <div class="status-pill">TECHNICAL DATA LAB ACTIVE</div>
-        <p>This environment is a dedicated sandbox for validating GTM architectures, DataLayer schemas, and Consent Mode V2 implementations.</p>
+        <p>This environment is a dedicated sandbox for validating GTM architectures and Consent Mode V2.</p>
         
         <button class="btn" id="labButton">Trigger DataLayer Test Event</button>
 
         <div class="footer">
-            Container ID: <span class="id-badge">GTM-MGTFH25T</span><br>
+            Measurement ID: <span class="id-badge">G-HX9EEVMYQJ</span><br>
             Bridging Brand Creativity & Technical Data Engineering
         </div>
     </div>
@@ -57,11 +56,9 @@
             window.dataLayer.push({
                 'event': 'technical_lab_click',
                 'event_category': 'Engagement',
-                'event_label': 'Main CTA',
-                'location': 'Izmir_Lab',
                 'compliance_status': 'GDPR_Ready'
             });
-            alert('Signal sent to DataLayer! You can now verify it in the Tag Assistant window.');
+            alert('Signal sent to DataLayer!');
         });
     </script>
 </body>
