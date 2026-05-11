@@ -9,154 +9,79 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Evolving Data Lab (ACTIVE)</title>
+    <title>Smyrna & Sable | Evolving Data Lab</title>
     
     <style>
         :root {
             --navy-deep: #020c1b;
             --navy-light: #0a192f;
-            --gold-bright: #FFD700; /* Metalik Altın */
-            --gold-muted: #C5A021;
+            --gold-bright: #FFD700;
             --slate: #a8b2d1;
             --white: #e6f1ff;
-            --tech-orange: rgba(255, 165, 0, 0.7);
         }
 
         body { 
-            font-family: 'Inter', 'Segoe UI', sans-serif; 
+            font-family: 'Inter', sans-serif; 
             margin: 0; 
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            color: var(--white);
-            
-            /* --- ARKA PLAN DEĞİŞİKLİĞİ BAŞLANGICI --- */
-            
-            /* 1. Katman:image_7.png'deki o koyu füme/füme fırçalanmış metal dokusu (Base Image) */
-            background-image: url('dark-metal-texture.jpg'); /* Bu dokuyu GitHub'a yüklemelisin */
+            background: var(--navy-deep);
+            background-image: url('dark-metal-texture.jpg');
             background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Kaydırırken sabit kalsın */
-            position: relative;
+            background-attachment: fixed;
+            color: var(--white);
         }
-
-        /* 2. Katman: Doku üzerine hexagonal ağ deseni (Overlay) */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('hex-grid-overlay.png'); /* Bu transparan deseni GitHub'a yüklemelisin */
-            background-size: 300px; /* Desenin sıklığı */
-            opacity: 0.04; /* Çok hafif, görünmez gibi */
-            z-index: -1; /* İçeriğin arkasında kalsın */
-        }
-        
-        /* --- ARKA PLAN DEĞİŞİKLİĞİ BİTİŞİ --- */
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
-            background: rgba(2, 12, 27, 0.9); /* Daha koyu nav */
-            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px; background: rgba(2, 12, 27, 0.9); backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
             position: sticky; top: 0; z-index: 100;
         }
 
-        .logo { 
-            color: var(--gold-bright); font-weight: bold; font-size: 24px; letter-spacing: 3px;
-            text-transform: uppercase; text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
-        }
+        .logo { color: var(--gold-bright); font-weight: bold; text-decoration: none; letter-spacing: 2px; font-size: 20px; }
 
-        .nav-links a {
-            color: var(--slate); text-decoration: none; margin-left: 30px;
-            font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
-        }
+        .nav-links a { color: var(--slate); text-decoration: none; margin-left: 30px; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold-bright); }
 
-        .container {
-            flex: 1; display: flex; flex-direction: column; align-items: center;
-            padding: 80px 20px; text-align: center;
-        }
+        .container { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 80px 20px; text-align: center; }
 
-        h1 { 
-            color: var(--gold-bright); font-size: 64px; margin-bottom: 5px;
-            font-family: 'Georgia', serif; font-style: italic; letter-spacing: -2px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-        }
+        h1 { color: var(--gold-bright); font-size: 64px; margin-bottom: 5px; font-family: 'Georgia', serif; font-style: italic; }
+        .subtitle { color: var(--slate); font-size: 14px; margin-bottom: 50px; letter-spacing: 4px; text-transform: uppercase; }
 
-        .subtitle {
-            color: var(--slate); font-size: 16px; margin-bottom: 50px;
-            letter-spacing: 5px; text-transform: uppercase;
-        }
-
-        /* Proje Kartları Grid */
-        .grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; width: 100%; max-width: 1100px;
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1100px; }
 
         .card {
-            background: rgba(17, 34, 64, 0.8); /* Daha transparan kart */
-            padding: 35px; border-radius: 4px; /* Keskin köşeler, image_7.png tarzı */
-            border: 1px solid rgba(212, 175, 55, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            text-align: left;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Derin gölge */
+            background: rgba(17, 34, 64, 0.8); padding: 35px; border-radius: 4px; 
+            border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.4s; text-align: left; cursor: pointer;
         }
 
         .card:hover {
-            border-color: var(--gold-bright);
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(17, 34, 64, 1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.2);
+            border-color: var(--gold-bright); transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        .card h3 { color: var(--gold-bright); margin-top: 0; font-size: 20px; letter-spacing: 1px; }
+        .card h3 { color: var(--gold-bright); margin-top: 0; }
         .card p { color: var(--slate); font-size: 14px; line-height: 1.6; }
 
-        /* Teknik Durum Paneli (Dashboard) */
         .status-panel {
-            background: rgba(10, 25, 47, 0.9);
-            padding: 30px; border-radius: 4px; width: 100%; max-width: 700px;
-            text-align: left; margin-top: 60px;
+            background: rgba(10, 25, 47, 0.9); padding: 30px; border-radius: 4px; 
+            width: 100%; max-width: 700px; text-align: left; margin-top: 60px;
             border: 1px solid rgba(212, 175, 55, 0.15);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         }
-
-        .status-header { color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;}
-        .status-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--slate); }
-        .status-item:last-child { border-bottom: none; }
-        .status-id { font-family: monospace; color: var(--white); font-size: 14px; }
-        .status-pill { padding: 5px 12px; border-radius: 2px; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;}
+        .status-header { color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; }
+        .status-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
+        .status-pill { padding: 4px 10px; border-radius: 2px; font-weight: bold; font-size: 10px; text-transform: uppercase; }
         .pill-active { background: #238636; color: white; }
-        .pill-pending { background: #8e6d1e; color: white; }
-        .pill-alert { background: #da3633; color: white; box-shadow: 0 0 10px rgba(218, 54, 51, 0.5); }
-
-        .btn-test {
-            margin-top: 50px; background: transparent; border: 1px solid var(--gold-muted);
-            color: var(--gold-muted); padding: 16px 36px; border-radius: 2px;
-            cursor: pointer; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
-            font-weight: bold; transition: 0.3s;
-        }
-
-        .btn-test:hover { 
-            background: var(--gold-bright); color: var(--navy-deep);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
-            border-color: var(--gold-bright);
-        }
+        .pill-alert { background: #da3633; color: white; }
 
     </style>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <nav>
-        <div class="logo">Smyrna & Sable</div>
+        <a href="index.html" class="logo">SMYRNA & SABLE</a>
         <div class="nav-links">
-            <a href="#">Kaggle Projects</a>
+            <a href="kaggle.html">Kaggle Projects</a>
             <a href="#">SQL Analysis</a>
             <a href="#">Data Strategy</a>
         </div>
@@ -164,63 +89,36 @@
 
     <div class="container">
         <h1>Smyrna & Sable</h1>
-        <div class="subtitle">Evolving Data Lab IS ACTIVE</div>
+        <div class="subtitle">Evolving Data Lab is ACTIVE</div>
         
         <div class="grid">
-            <div class="card">
+            <div class="card" onclick="window.location.href='kaggle.html'">
                 <h3>Kaggle Projects</h3>
-                <p>Advanced predictive modeling, machine learning pipelines, and data science portfolios.</p>
+                <p>9 Boyoz = 1 Tree and other environmental data simulations. End-to-end data storytelling.</p>
             </div>
+            
             <div class="card">
                 <h3>SQL Analysis</h3>
-                <p>Complex relational database queries, optimization strategies, and data engineering workflows.</p>
+                <p>Relational database optimizations and advanced data querying strategies.</p>
             </div>
+            
             <div class="card">
                 <h3>Technical Lab</h3>
-                <p>Validation sandbox for Consent Mode V2, GTM server-side, and GA4 infrastructure.</p>
+                <p>Consent Mode V2 validation and GTM Server-Side infrastructure monitoring.</p>
             </div>
         </div>
 
         <div class="status-panel">
-            <div class="status-header">Technical Infrastructure Status</div>
-            
+            <div class="status-header">Live Infrastructure Status</div>
             <div class="status-item">
-                <span>Google Tag Manager (Logic):</span>
-                <span class="status-id">GTM-MGTFH25T</span>
-                <span class="status-pill pill-active">Active</span>
+                <span>GTM Container:</span>
+                <span class="status-pill pill-active">GTM-MGTFH25T Active</span>
             </div>
-            
             <div class="status-item">
-                <span>Google Analytics 4 (Storage):</span>
-                <span class="status-id">G-HX9EEVMYQJ</span>
-                <span class="status-pill pill-active">Active</span>
-            </div>
-            
-            <div class="status-item">
-                <span>Consent Mode V2:</span>
-                <span class="status-id">Pending User Input</span>
-                <span class="status-pill pill-pending">Initializing</span>
-            </div>
-
-            <div class="status-item" style="color: var(--tech-orange);">
-                <span>GTM Diagnostics (EEA Signals):</span>
-                <span>Monitoring 2 Active Issues</span>
+                <span>EEA Consent Signals:</span>
                 <span class="status-pill pill-alert">Action Required</span>
             </div>
         </div>
-
-        <button class="btn-test" id="labButton">Dispatch DataLayer Signal</button>
     </div>
-
-    <script>
-        document.getElementById('labButton').addEventListener('click', function() {
-            window.dataLayer.push({
-                'event': 'technical_lab_click',
-                'event_category': 'Engagement',
-                'compliance_status': 'Ready'
-            });
-            alert('Digital Signal Dispatched to DataLayer.');
-        });
-    </script>
 </body>
 </html>
