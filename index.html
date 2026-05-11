@@ -24,6 +24,7 @@
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             background: var(--navy-deep);
+            /* Arka plan görseli ve doku */
             background-image: url('dark-metal-texture.jpg');
             background-size: cover;
             background-attachment: fixed;
@@ -37,21 +38,40 @@
             position: sticky; top: 0; z-index: 100;
         }
 
-        .logo { color: var(--gold-bright); font-weight: bold; text-decoration: none; letter-spacing: 2px; font-size: 20px; }
+        .logo { 
+            color: var(--gold-bright); font-weight: bold; text-decoration: none; 
+            letter-spacing: 2px; font-size: 20px; text-transform: uppercase;
+        }
 
-        .nav-links a { color: var(--slate); text-decoration: none; margin-left: 30px; font-size: 13px; text-transform: uppercase; transition: 0.3s; }
+        .nav-links a { 
+            color: var(--slate); text-decoration: none; margin-left: 30px; 
+            font-size: 13px; text-transform: uppercase; transition: 0.3s; 
+        }
         .nav-links a:hover { color: var(--gold-bright); }
 
-        .container { flex: 1; display: flex; flex-direction: column; align-items: center; padding: 80px 20px; text-align: center; }
+        .container { 
+            flex: 1; display: flex; flex-direction: column; align-items: center; 
+            padding: 80px 20px; text-align: center; 
+        }
 
-        h1 { color: var(--gold-bright); font-size: 64px; margin-bottom: 5px; font-family: 'Georgia', serif; font-style: italic; }
-        .subtitle { color: var(--slate); font-size: 14px; margin-bottom: 50px; letter-spacing: 4px; text-transform: uppercase; }
+        h1 { 
+            color: var(--gold-bright); font-size: 64px; margin-bottom: 5px; 
+            font-family: 'Georgia', serif; font-style: italic; 
+        }
+        .subtitle { 
+            color: var(--slate); font-size: 14px; margin-bottom: 50px; 
+            letter-spacing: 4px; text-transform: uppercase; 
+        }
 
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; width: 100%; max-width: 1100px; }
+        .grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; width: 100%; max-width: 1100px; 
+        }
 
         .card {
             background: rgba(17, 34, 64, 0.8); padding: 35px; border-radius: 4px; 
-            border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.4s; text-align: left; cursor: pointer;
+            border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.4s; 
+            text-align: left; cursor: pointer;
         }
 
         .card:hover {
@@ -59,7 +79,7 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.1);
         }
 
-        .card h3 { color: var(--gold-bright); margin-top: 0; }
+        .card h3 { color: var(--gold-bright); margin-top: 0; font-size: 20px; }
         .card p { color: var(--slate); font-size: 14px; line-height: 1.6; }
 
         .status-panel {
@@ -67,9 +87,18 @@
             width: 100%; max-width: 700px; text-align: left; margin-top: 60px;
             border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .status-header { color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; font-size: 14px; text-transform: uppercase; }
-        .status-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; }
-        .status-pill { padding: 4px 10px; border-radius: 2px; font-weight: bold; font-size: 10px; text-transform: uppercase; }
+        .status-header { 
+            color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; 
+            font-size: 14px; text-transform: uppercase; 
+        }
+        .status-item { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; 
+        }
+        .status-pill { 
+            padding: 4px 10px; border-radius: 2px; font-weight: bold; 
+            font-size: 10px; text-transform: uppercase; 
+        }
         .pill-active { background: #238636; color: white; }
         .pill-alert { background: #da3633; color: white; }
 
@@ -83,7 +112,7 @@
         <div class="nav-links">
             <a href="kaggle.html">Kaggle Projects</a>
             <a href="#">SQL Analysis</a>
-            <a href="#">Data Strategy</a>
+            <a href="data-strategy.html">Data Strategy</a>
         </div>
     </nav>
 
@@ -94,24 +123,24 @@
         <div class="grid">
             <div class="card" onclick="window.location.href='kaggle.html'">
                 <h3>Kaggle Projects</h3>
-                <p>9 Boyoz = 1 Tree and other environmental data simulations. End-to-end data storytelling.</p>
+                <p>9 Boyoz = 1 Tree and advanced environmental data simulations. Bridging data and storytelling.</p>
             </div>
             
-            <div class="card">
-                <h3>SQL Analysis</h3>
-                <p>Relational database optimizations and advanced data querying strategies.</p>
+            <div class="card" onclick="window.location.href='data-strategy.html'">
+                <h3>Data Strategy</h3>
+                <p>Strategic B2B market entry frameworks and ROI optimization through data intelligence.</p>
             </div>
             
             <div class="card">
                 <h3>Technical Lab</h3>
-                <p>Consent Mode V2 validation and GTM Server-Side infrastructure monitoring.</p>
+                <p>Verification sandbox for Consent Mode V2 and GTM Server-Side infrastructure monitoring.</p>
             </div>
         </div>
 
         <div class="status-panel">
             <div class="status-header">Live Infrastructure Status</div>
             <div class="status-item">
-                <span>GTM Container:</span>
+                <span>Google Tag Manager:</span>
                 <span class="status-pill pill-active">GTM-MGTFH25T Active</span>
             </div>
             <div class="status-item">
