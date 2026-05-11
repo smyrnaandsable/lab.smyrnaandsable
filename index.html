@@ -144,10 +144,59 @@
                 <span class="status-pill pill-active">GTM-MGTFH25T Active</span>
             </div>
             <div class="status-item">
-                <span>EEA Consent Signals:</span>
-                <span class="status-pill pill-alert">Action Required</span>
-            </div>
-        </div>
+    <span>EEA Consent Signals:</span>
+    <span id="consent-status-pill" class="status-pill pill-alert">Action Required</span>
+</div>
+
+    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(10, 25, 47, 0.95); border: 1px solid var(--gold-bright); padding: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px); max-width: 600px;">
+    <div style="color: var(--gold-bright); font-weight: bold; font-size: 16px; letter-spacing: 1px;">🛡️ CONSENT MANAGEMENT SYSTEM</div>
+    <p style="color: var(--slate); font-size: 13px; margin: 0; line-height: 1.6;">
+        Smyrna & Sable uses cookies to analyze traffic and optimize your "Data Lab" experience. We support <strong>GDPR & Consent Mode V2</strong> compliance. Choose your data preference:
+    </p>
+    <div style="display: flex; gap: 10px; justify-content: flex-end;">
+        <button onclick="updateConsent(false)" style="background: transparent; border: 1px solid var(--slate); color: var(--slate); padding: 8px 15px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;">REJECT ALL</button>
+        <button onclick="updateConsent(true)" style="background: var(--gold-bright); border: 1px solid var(--gold-bright); color: var(--navy-deep); padding: 8px 15px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;">ACCEPT ALL</button>
     </div>
+</div>
+
+<script>
+    // Consent Mode V2 Logic
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+
+    // Default: Deny everything (GDPR compliant)
+    gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'analytics_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
+    });
+
+    function updateConsent(isAccepted) {
+        const status = isAccepted ? 'granted' : 'denied';
+        
+        gtag('consent', 'update', {
+            'ad_storage': status,
+            'analytics_storage': status,
+            'ad_user_data': status,
+            'ad_personalization': status
+        });
+
+        // Hide banner
+        document.getElementById('cookie-banner').style.display = 'none';
+        
+        // Show success in console for recruiters to see
+        console.log("Smyrna & Sable: Consent Mode V2 Updated to " + status);
+        
+        // Update the status panel on the page (UI improvement)
+        const signals = document.querySelectorAll('.status-pill');
+        if(isAccepted && signals[1]) {
+            signals[1].innerText = 'Signals: GRANTED';
+            signals[1].style.background = '#238636';
+        }
+    }
+</script>
+
 </body>
 </html>
