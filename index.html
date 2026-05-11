@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Technical Lab</title>
+    <title>Smyrna & Sable | Technical Data Lab</title>
     
-    <!-- Consent Mode V2 Default State -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
+        
+        // Default Consent: All denied for European Privacy Standards
         gtag('consent', 'default', {
             'ad_storage': 'denied',
             'ad_user_data': 'denied',
@@ -17,52 +18,50 @@
         });
     </script>
 
-    <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-T2WT39X9');</script>
-    <!-- End Google Tag Manager -->
-
+    })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; color: #1c1e21; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); max-width: 500px; width: 90%; text-align: center; }
-        h1 { color: #003366; margin-bottom: 10px; }
-        .status-badge { display: inline-block; padding: 5px 15px; border-radius: 20px; background: #e7f3ff; color: #1877f2; font-weight: bold; margin-bottom: 20px; }
-        .btn { background-color: #1877f2; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; transition: 0.3s; }
-        .btn:hover { background-color: #166fe5; }
-        .footer { margin-top: 30px; font-size: 12px; color: #65676b; line-height: 1.5; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+        .card { background: #161b22; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 550px; width: 90%; text-align: center; border: 1px solid #30363d; }
+        h1 { color: #58a6ff; font-size: 26px; margin-bottom: 10px; }
+        .status-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; background: #238636; color: white; font-size: 13px; font-weight: bold; margin-bottom: 25px; }
+        p { line-height: 1.6; color: #8b949e; }
+        .btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #f0f6fc1a; padding: 14px 28px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; transition: 0.2s; width: 100%; margin-top: 20px; }
+        .btn:hover { background-color: #30363d; border-color: #8b949e; }
+        .footer { margin-top: 30px; font-size: 12px; color: #484f58; border-top: 1px solid #30363d; padding-top: 20px; }
+        .id-badge { color: #58a6ff; font-family: monospace; }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T2WT39X9"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
 
     <div class="card">
         <h1>Smyrna & Sable</h1>
-        <div class="status-badge">Technical Lab: Active</div>
-        <p>Welcome to the GTM and Consent Mode V2 testing environment.</p>
+        <div class="status-pill">TECHNICAL DATA LAB ACTIVE</div>
+        <p>This environment is a dedicated sandbox for validating GTM architectures, DataLayer schemas, and Consent Mode V2 implementations.</p>
         
-        <button class="btn" id="testButton">Trigger GTM Test Event</button>
+        <button class="btn" id="labButton">Trigger DataLayer Test Event</button>
 
         <div class="footer">
-            Container ID: GTM-T2WT39X9<br>
-            © 2026 Smyrna & Sable Data Solutions
+            Container ID: <span class="id-badge">GTM-MGTFH25T</span><br>
+            Bridging Brand Creativity & Technical Data Engineering
         </div>
     </div>
 
     <script>
-        // Function to push data to DataLayer when button is clicked
-        document.getElementById('testButton').addEventListener('click', function() {
+        document.getElementById('labButton').addEventListener('click', function() {
             window.dataLayer.push({
-                'event': 'lab_test_click',
-                'button_name': 'Trigger Test Event',
-                'timestamp': new Date().toISOString()
+                'event': 'technical_lab_click',
+                'event_category': 'Engagement',
+                'event_label': 'Main CTA',
+                'location': 'Izmir_Lab',
+                'compliance_status': 'GDPR_Ready'
             });
-            alert('GTM Event Sent! Please check your Tag Assistant debugger.');
+            alert('Signal sent to DataLayer! You can now verify it in the Tag Assistant window.');
         });
     </script>
 </body>
