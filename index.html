@@ -15,177 +15,136 @@
         :root {
             --navy-deep: #020c1b;
             --navy-light: #0a192f;
-            --gold-bright: #FFD700;
+            --gold-bright: #FFD700; /* Metalik Altın */
             --gold-muted: #C5A021;
             --slate: #a8b2d1;
             --white: #e6f1ff;
             --tech-orange: rgba(255, 165, 0, 0.7);
-            --tech-blue: rgba(100, 149, 237, 0.7);
         }
 
         body { 
             font-family: 'Inter', 'Segoe UI', sans-serif; 
-            background: radial-gradient(circle at center, var(--navy-light) 0%, var(--navy-deep) 100%);
-            color: var(--white); 
             margin: 0; 
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background-image: linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+            color: var(--white);
+            
+            /* --- ARKA PLAN DEĞİŞİKLİĞİ BAŞLANGICI --- */
+            
+            /* 1. Katman:image_7.png'deki o koyu füme/füme fırçalanmış metal dokusu (Base Image) */
+            background-image: url('dark-metal-texture.jpg'); /* Bu dokuyu GitHub'a yüklemelisin */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Kaydırırken sabit kalsın */
+            position: relative;
         }
+
+        /* 2. Katman: Doku üzerine hexagonal ağ deseni (Overlay) */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('hex-grid-overlay.png'); /* Bu transparan deseni GitHub'a yüklemelisin */
+            background-size: 300px; /* Desenin sıklığı */
+            opacity: 0.04; /* Çok hafif, görünmez gibi */
+            z-index: -1; /* İçeriğin arkasında kalsın */
+        }
+        
+        /* --- ARKA PLAN DEĞİŞİKLİĞİ BİTİŞİ --- */
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(2, 12, 27, 0.8);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--gold-muted);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            background: rgba(2, 12, 27, 0.9); /* Daha koyu nav */
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky; top: 0; z-index: 100;
         }
 
         .logo { 
-            color: var(--gold-bright); 
-            font-weight: bold; 
-            font-size: 22px; 
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            color: var(--gold-bright); font-weight: bold; font-size: 24px; letter-spacing: 3px;
+            text-transform: uppercase; text-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
         }
 
         .nav-links a {
-            color: var(--slate);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            color: var(--slate); text-decoration: none; margin-left: 30px;
+            font-size: 13px; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
         }
-
         .nav-links a:hover { color: var(--gold-bright); }
 
         .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 20px;
-            text-align: center;
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            padding: 80px 20px; text-align: center;
         }
 
         h1 { 
-            color: var(--gold-bright); 
-            font-size: 56px; 
-            margin-bottom: 5px;
-            font-family: 'Georgia', serif;
-            font-style: italic;
-            letter-spacing: -1px;
+            color: var(--gold-bright); font-size: 64px; margin-bottom: 5px;
+            font-family: 'Georgia', serif; font-style: italic; letter-spacing: -2px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
         }
 
         .subtitle {
-            color: var(--slate);
-            font-size: 16px;
-            margin-bottom: 20px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
+            color: var(--slate); font-size: 16px; margin-bottom: 50px;
+            letter-spacing: 5px; text-transform: uppercase;
         }
 
-        /* Teknolojik Ağ Simgesi ve Test Alanı */
-        .tech-sandbox {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-            margin: 40px 0;
-            position: relative;
+        /* Proje Kartları Grid */
+        .grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; width: 100%; max-width: 1100px;
         }
 
-        /* O Çok Sevdiğin Hexagonal Network (Resim) */
-        .hex-icon-container {
-            position: relative;
-            width: 150px;
-            height: 150px;
-        }
-
-        .hex-icon {
-            width: 100%;
-            height: 100%;
-            display: block;
-            background-image: url('hex-network-icon.png'); /* Bu resmi GitHub'a yüklemen lazım */
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            filter: drop-shadow(0 0 15px var(--gold-bright));
-            animation: pulse-hex 4s infinite ease-in-out;
-        }
-
-        /* Resim Yoksa Gösterilecek Basit İllüstrasyon (Yedek) */
-        .hex-fallback {
-            width: 100px; height: 100px;
-            display: flex; justify-content: center; align-items: center;
-            position: absolute; top: 25px; left: 25px;
-        }
-        .hex-fallback::after {
-            content: '🔶'; font-size: 50px;
-            color: var(--gold-bright);
-            opacity: 0.7; filter: blur(5px);
-        }
-
-        /* Teknik Durum Paneli (GTM-MGTFH25T vb.) */
-        .status-panel {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            background: rgba(17, 34, 64, 0.7);
-            padding: 25px;
-            border-radius: 8px;
+        .card {
+            background: rgba(17, 34, 64, 0.8); /* Daha transparan kart */
+            padding: 35px; border-radius: 4px; /* Keskin köşeler, image_7.png tarzı */
             border: 1px solid rgba(212, 175, 55, 0.1);
-            width: 100%;
-            max-width: 600px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: left;
-            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Derin gölge */
         }
 
-        .status-header { color: var(--gold-bright); font-weight: bold; margin-bottom: 10px; font-size: 16px;}
-        .status-item { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--slate); }
+        .card:hover {
+            border-color: var(--gold-bright);
+            transform: translateY(-10px) scale(1.02);
+            background: rgba(17, 34, 64, 1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .card h3 { color: var(--gold-bright); margin-top: 0; font-size: 20px; letter-spacing: 1px; }
+        .card p { color: var(--slate); font-size: 14px; line-height: 1.6; }
+
+        /* Teknik Durum Paneli (Dashboard) */
+        .status-panel {
+            background: rgba(10, 25, 47, 0.9);
+            padding: 30px; border-radius: 4px; width: 100%; max-width: 700px;
+            text-align: left; margin-top: 60px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .status-header { color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;}
+        .status-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; color: var(--slate); }
+        .status-item:last-child { border-bottom: none; }
         .status-id { font-family: monospace; color: var(--white); font-size: 14px; }
-        .status-pill { padding: 4px 10px; border-radius: 20px; font-weight: bold; font-size: 11px; text-transform: uppercase;}
+        .status-pill { padding: 5px 12px; border-radius: 2px; font-weight: bold; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;}
         .pill-active { background: #238636; color: white; }
         .pill-pending { background: #8e6d1e; color: white; }
-        .pill-alert { background: #da3633; color: white; } /* GTM 'Acil' uyarısına gönderme */
+        .pill-alert { background: #da3633; color: white; box-shadow: 0 0 10px rgba(218, 54, 51, 0.5); }
 
         .btn-test {
-            margin-top: 30px;
-            background: transparent;
-            border: 1px solid var(--gold-bright);
-            color: var(--gold-bright);
-            padding: 16px 36px;
-            border-radius: 2px;
-            cursor: pointer;
-            font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: 0.3s;
-            position: relative;
+            margin-top: 50px; background: transparent; border: 1px solid var(--gold-muted);
+            color: var(--gold-muted); padding: 16px 36px; border-radius: 2px;
+            cursor: pointer; font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+            font-weight: bold; transition: 0.3s;
         }
 
         .btn-test:hover { 
-            background: var(--gold-bright); 
-            color: var(--navy-deep);
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-        }
-
-        /* Animasyonlar */
-        @keyframes pulse-hex {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px var(--gold-muted)); opacity: 0.8; }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--gold-bright)); opacity: 1; }
+            background: var(--gold-bright); color: var(--navy-deep);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            border-color: var(--gold-bright);
         }
 
     </style>
@@ -207,42 +166,50 @@
         <h1>Smyrna & Sable</h1>
         <div class="subtitle">Evolving Data Lab IS ACTIVE</div>
         
-        <div class="tech-sandbox">
-            <div class="hex-icon-container">
-                <div class="hex-icon"></div>
-                <div class="hex-fallback"></div>
+        <div class="grid">
+            <div class="card">
+                <h3>Kaggle Projects</h3>
+                <p>Advanced predictive modeling, machine learning pipelines, and data science portfolios.</p>
             </div>
-
-            <div class="status-panel">
-                <div class="status-header">Technical Infrastructure Status</div>
-                
-                <div class="status-item">
-                    <span>Google Tag Manager (Brain):</span>
-                    <span class="status-id">GTM-MGTFH25T</span>
-                    <span class="status-pill pill-active">Active</span>
-                </div>
-                
-                <div class="status-item">
-                    <span>Google Analytics 4 (Data Hub):</span>
-                    <span class="status-id">G-HX9EEVMYQJ</span>
-                    <span class="status-pill pill-active">Active</span>
-                </div>
-                
-                <div class="status-item">
-                    <span>Consent Mode V2 (Gizlilik Odaklı):</span>
-                    <span>Status:</span>
-                    <span class="status-pill pill-pending">Initializing (Consent required)</span>
-                </div>
-
-                <div class="status-item" style="color: var(--tech-orange);">
-                    <span>GTM Teşhis (AEA Rıza Sinyali):</span>
-                    <span>Last Status (2 Issues Detected):</span>
-                    <span class="status-pill pill-alert">Acil Action Required</span> </div>
+            <div class="card">
+                <h3>SQL Analysis</h3>
+                <p>Complex relational database queries, optimization strategies, and data engineering workflows.</p>
             </div>
-
-            <button class="btn-test" id="labButton">Dispatch DataLayer Test Signal</button>
+            <div class="card">
+                <h3>Technical Lab</h3>
+                <p>Validation sandbox for Consent Mode V2, GTM server-side, and GA4 infrastructure.</p>
+            </div>
         </div>
 
+        <div class="status-panel">
+            <div class="status-header">Technical Infrastructure Status</div>
+            
+            <div class="status-item">
+                <span>Google Tag Manager (Logic):</span>
+                <span class="status-id">GTM-MGTFH25T</span>
+                <span class="status-pill pill-active">Active</span>
+            </div>
+            
+            <div class="status-item">
+                <span>Google Analytics 4 (Storage):</span>
+                <span class="status-id">G-HX9EEVMYQJ</span>
+                <span class="status-pill pill-active">Active</span>
+            </div>
+            
+            <div class="status-item">
+                <span>Consent Mode V2:</span>
+                <span class="status-id">Pending User Input</span>
+                <span class="status-pill pill-pending">Initializing</span>
+            </div>
+
+            <div class="status-item" style="color: var(--tech-orange);">
+                <span>GTM Diagnostics (EEA Signals):</span>
+                <span>Monitoring 2 Active Issues</span>
+                <span class="status-pill pill-alert">Action Required</span>
+            </div>
+        </div>
+
+        <button class="btn-test" id="labButton">Dispatch DataLayer Signal</button>
     </div>
 
     <script>
