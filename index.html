@@ -9,56 +9,169 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Technical Data Lab</title>
+    <title>Smyrna & Sable | Evolving Data Lab</title>
     
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-            gtag('consent', 'default', {
-        'ad_storage': 'granted',
-        'ad_user_data': 'granted',
-        'ad_personalization': 'granted',
-        'analytics_storage': 'granted'
-    });
-    </script>
-
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #0d1117; color: #c9d1d9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
-        .card { background: #161b22; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); max-width: 550px; width: 90%; text-align: center; border: 1px solid #30363d; }
-        h1 { color: #58a6ff; font-size: 26px; margin-bottom: 10px; }
-        .status-pill { display: inline-block; padding: 4px 12px; border-radius: 20px; background: #238636; color: white; font-size: 13px; font-weight: bold; margin-bottom: 25px; }
-        p { line-height: 1.6; color: #8b949e; }
-        .btn { background-color: #21262d; color: #c9d1d9; border: 1px solid #f0f6fc1a; padding: 14px 28px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600; transition: 0.2s; width: 100%; margin-top: 20px; }
-        .btn:hover { background-color: #30363d; border-color: #8b949e; }
-        .footer { margin-top: 30px; font-size: 12px; color: #484f58; border-top: 1px solid #30363d; padding-top: 20px; }
-        .id-badge { color: #58a6ff; font-family: monospace; }
+        :root {
+            --navy: #0a192f;
+            --gold: #d4af37;
+            --slate: #8892b0;
+            --white: #e6f1ff;
+        }
+
+        body { 
+            font-family: 'Inter', 'Segoe UI', sans-serif; 
+            background-color: var(--navy); 
+            color: var(--white); 
+            margin: 0; 
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(10, 25, 47, 0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { 
+            color: var(--gold); 
+            font-weight: bold; 
+            font-size: 20px; 
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Main Content */
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        h1 { 
+            color: var(--gold); 
+            font-size: 48px; 
+            margin-bottom: 10px;
+            font-family: 'Georgia', serif;
+        }
+
+        .subtitle {
+            color: var(--slate);
+            font-size: 18px;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* Project Cards */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .card {
+            background: #112240;
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: 0.3s;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .card h3 { color: var(--gold); margin-top: 0; }
+        .card p { color: var(--slate); font-size: 14px; line-height: 1.5; }
+
+        /* Testing Section */
+        .btn-test {
+            margin-top: 50px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-test:hover { background: rgba(212, 175, 55, 0.1); }
     </style>
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-    <div class="card">
-        <h1>Smyrna & Sable</h1>
-        <div class="status-pill">TECHNICAL DATA LAB ACTIVE</div>
-        <p>This environment is a dedicated sandbox for validating GTM architectures and Consent Mode V2.</p>
-        
-        <button class="btn" id="labButton">Trigger DataLayer Test Event</button>
-
-        <div class="footer">
-            Measurement ID: <span class="id-badge">G-HX9EEVMYQJ</span><br>
-            Bridging Brand Creativity & Technical Data Engineering
+    <nav>
+        <div class="logo">Smyrna & Sable</div>
+        <div class="nav-links">
+            <a href="#kaggle">Kaggle Projects</a>
+            <a href="#sql">SQL Analysis</a>
+            <a href="#lab">Technical Lab</a>
         </div>
+    </nav>
+
+    <div class="container">
+        <h1>Smyrna & Sable</h1>
+        <div class="subtitle">EVOLVING DATA LAB</div>
+        
+        <div class="grid">
+            <div class="card" onclick="alert('Kaggle showcase is under development.')">
+                <h3>Kaggle Projects</h3>
+                <p>Advanced data science projects, machine learning models, and notebook implementations.</p>
+            </div>
+            <div class="card" onclick="alert('SQL analysis portal is under development.')">
+                <h3>SQL Analysis</h3>
+                <p>Relational database architecture, complex query optimization, and data engineering workflows.</p>
+            </div>
+            <div class="card" onclick="alert('Technical Lab environment is active.')">
+                <h3>Technical Lab</h3>
+                <p>Validation sandbox for GTM, GA4, Consent Mode V2, and tracking infrastructure.</p>
+            </div>
+        </div>
+
+        <button class="btn-test" id="labButton">Trigger DataLayer Test Event</button>
     </div>
 
     <script>
+        // DataLayer Event Trigger
         document.getElementById('labButton').addEventListener('click', function() {
             window.dataLayer.push({
                 'event': 'technical_lab_click',
                 'event_category': 'Engagement',
                 'compliance_status': 'GDPR_Ready'
             });
-            alert('Signal sent to DataLayer!');
+            alert('Signal dispatched to DataLayer successfully!');
         });
     </script>
 </body>
