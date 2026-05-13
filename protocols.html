@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sovereign Protocols | Smyrna & Sable Technical Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #e0e0e0;
+            --accent-color: #00ff41; /* Terminal Green */
+            --dim-text: #888;
+            --border-color: #333;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Background Grid Effect */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 40px;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .status-bar {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: var(--dim-text);
+            margin-top: 20px;
+            max-width: 700px;
+        }
+
+        .protocol-section {
+            margin-bottom: 100px;
+        }
+
+        .protocol-id {
+            font-family: 'Roboto Mono', monospace;
+            color: var(--accent-color);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 0 0 20px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .mission-statement {
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid { grid-template-columns: 1fr; }
+        }
+
+        h3 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--dim-text);
+            font-size: 1rem;
+        }
+
+        /* Terminal Simulation Style */
+        .terminal-window {
+            background-color: #000;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            padding: 20px;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.9rem;
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 40px;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            color: var(--dim-text);
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .terminal-body {
+            color: #00ff41;
+            line-height: 1.4;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background-color: var(--accent-color);
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .footer-note {
+            margin-top: 80px;
+            padding: 30px;
+            border: 1px dashed var(--border-color);
+            background-color: rgba(255, 255, 255, 0.02);
+            text-align: center;
+        }
+
+        .footer-note h4 {
+            font-family: 'Roboto Mono', monospace;
+            color: #ff4141; /* Warning Red */
+            margin-top: 0;
+        }
+
+        .footer-note p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-bottom: 40px;
+            color: var(--dim-text);
+            text-decoration: none;
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.8rem;
+        }
+
+        a.back-link:hover {
+            color: var(--accent-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <a href="index.html" class="back-link">< RETURN TO HUB</a>
+
+    <header>
+        <h1>The Sovereign Protocols</h1>
+        <div class="status-bar">SYSTEM STATUS: ENFORCING DIGITAL GOVERNANCE // LEVEL 04 CLEARENCE REQUIRED</div>
+        <p class="intro-text">
+            Standard marketing tools reach their limits. Our protocols redefine them. 
+            The Sovereign Protocols represent a strategic shift from passive data observation to active digital governance. 
+            Engineered within the Smyrna & Sable Technical Lab.
+        </p>
+    </header>
+
+    <section class="protocol-section">
+        <span class="protocol-id">[ PROTOCOL 01 ]</span>
+        <h2>WASTE ORACLE</h2>
+        <div class="mission-statement">
+            "Your budget is a weapon. Stop firing blanks."
+        </div>
+
+        <div class="content-grid">
+            <div class="grid-item">
+                <h3>The Problem</h3>
+                <p>
+                    Up to 30% of advertising capital is drained by non-human traffic, synthetic interactions, 
+                    and low-intent signals that standard ad-platforms fail to filter. Volume is often prioritized over efficiency.
+                </p>
+            </div>
+            <div class="grid-item">
+                <h3>The Solution</h3>
+                <p>
+                    Waste Oracle is a server-side defensive layer that validates the integrity of every inbound signal. 
+                    By processing behavioral entropy at the server level, it identifies discrepancies between genuine 
+                    human interest and algorithmic noise.
+                </p>
+            </div>
+        </div>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span>TERMINAL V1.0 - WASTE_ORACLE_LOG</span>
+                <span>SECURE_CONN</span>
+            </div>
+            <div class="terminal-body">
+                > SYSTEM_STATUS: MONITORING INBOUND TRAFFIC...<br>
+                > DEPLOYING BEHAVIORAL ENTROPY ANALYZER... [OK]<br>
+                > ANALYZING CLICK_ID: 8829-QX_ANALYSIS_RUNNING...<br>
+                > ALERT: MICRO-MOVEMENT JITTER DETECTED.<br>
+                > SIGNAL CLASSIFIED AS: NON-HUMAN / BOT TRAFFIC.<br>
+                > ACTION: SUPPRESSING CONVERSION SIGNAL.<br>
+                > ACTION: DISPATCHING NULL-VALUE TO AD-ALGORITHM.<br>
+                > RESULT: €14.20 PRESERVED. ALGORITHM RE-ROUTED.<br>
+                > <span class="cursor"></span>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer-note">
+        <h4>[ CLASSIFIED SPECIFICATIONS ]</h4>
+        <p>
+            To maintain the structural integrity of the Sovereign Protocols, technical schemas, Python logic, 
+            and SQL architecture are classified. Access to full documentation and server-side deployment modules 
+            is restricted to active strategic partners.
+        </p>
+    </div>
+</div>
+
+</body>
+</html>
