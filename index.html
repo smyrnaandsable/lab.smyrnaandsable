@@ -18,14 +18,14 @@
             --gold-bright: #FFD700;
             --slate: #a8b2d1;
             --white: #e6f1ff;
+            --protocol-green: #00ff41;
         }
 
         body { 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             background: var(--navy-deep);
-            /* Arka plan görseli ve doku */
-            background-image: url('dark-metal-texture.jpg');
+            background-image: linear-gradient(rgba(2, 12, 27, 0.8), rgba(2, 12, 27, 0.8)), url('dark-metal-texture.jpg');
             background-size: cover;
             background-attachment: fixed;
             color: var(--white);
@@ -43,14 +43,27 @@
             letter-spacing: 2px; font-size: 20px; text-transform: uppercase;
         }
 
+        .nav-links { display: flex; align-items: center; }
         .nav-links a { 
             color: var(--slate); text-decoration: none; margin-left: 30px; 
-            font-size: 13px; text-transform: uppercase; transition: 0.3s; 
+            font-size: 12px; text-transform: uppercase; transition: 0.3s; 
+            letter-spacing: 1px;
         }
         .nav-links a:hover { color: var(--gold-bright); }
 
+        /* Yeni Protokol Link Stili */
+        .protocol-link {
+            color: var(--protocol-green) !important;
+            font-family: 'Roboto Mono', monospace;
+            border-bottom: 1px solid transparent;
+        }
+        .protocol-link:hover {
+            border-bottom: 1px solid var(--protocol-green);
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
+        }
+
         .container { 
-            flex: 1; display: flex; flex-direction: column; align-items: center; 
+            display: flex; flex-direction: column; align-items: center; 
             padding: 80px 20px; text-align: center; 
         }
 
@@ -69,14 +82,14 @@
         }
 
         .card {
-            background: rgba(17, 34, 64, 0.8); padding: 35px; border-radius: 4px; 
+            background: rgba(17, 34, 64, 0.5); padding: 35px; border-radius: 4px; 
             border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.4s; 
             text-align: left; cursor: pointer;
         }
 
         .card:hover {
-            border-color: var(--gold-bright); transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 20px rgba(212, 175, 55, 0.1);
+            border-color: var(--gold-bright); transform: translateY(-5px);
+            background: rgba(17, 34, 64, 0.8);
         }
 
         .card h3 { color: var(--gold-bright); margin-top: 0; font-size: 20px; }
@@ -87,21 +100,31 @@
             width: 100%; max-width: 700px; text-align: left; margin-top: 60px;
             border: 1px solid rgba(212, 175, 55, 0.15);
         }
-        .status-header { 
-            color: var(--gold-bright); font-weight: bold; margin-bottom: 15px; 
-            font-size: 14px; text-transform: uppercase; 
-        }
-        .status-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 13px; 
-        }
-        .status-pill { 
-            padding: 4px 10px; border-radius: 2px; font-weight: bold; 
-            font-size: 10px; text-transform: uppercase; 
-        }
-        .pill-active { background: #238636; color: white; }
-        .pill-alert { background: #da3633; color: white; }
 
+        /* Sovereign Protocols Section - Entegre Tasarım */
+        .sovereign-cta {
+            background: linear-gradient(to bottom, transparent, #020c1b);
+            padding: 120px 20px; text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        .sovereign-cta h2 {
+            font-family: 'Roboto Mono', monospace; color: var(--protocol-green);
+            font-size: 24px; letter-spacing: 4px; text-transform: uppercase;
+        }
+        .sovereign-cta p {
+            color: var(--slate); max-width: 600px; margin: 20px auto; font-size: 14px;
+        }
+        .lab-btn {
+            display: inline-block; padding: 15px 35px; border: 1px solid var(--protocol-green);
+            color: var(--protocol-green); text-decoration: none; font-family: 'Roboto Mono', monospace;
+            font-size: 13px; font-weight: bold; transition: 0.3s; margin-top: 20px;
+        }
+        .lab-btn:hover { background: var(--protocol-green); color: var(--navy-deep); box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); }
+
+        footer {
+            background: #010812; color: #444; padding: 40px 20px; text-align: center;
+            font-family: 'Roboto Mono', monospace; font-size: 10px; border-top: 1px solid #111;
+        }
     </style>
 </head>
 <body>
@@ -110,29 +133,10 @@
     <nav>
         <a href="index.html" class="logo">SMYRNA & SABLE</a>
         <div class="nav-links">
-            <a href="kaggle.html">Kaggle Projects</a>
-            <a href="#">SQL Analysis</a>
-            <a href="data-strategy.html">Data Strategy</a>
-            <li style="list-style: none; display: inline-block; margin-left: 20px; vertical-align: middle;">
-    <a href="protocols.html" style="
-        color: #00ff41; 
-        font-family: 'Roboto Mono', monospace; 
-        font-weight: bold; 
-        font-size: 0.85rem; 
-        text-decoration: none; 
-        border: 1px solid #00ff41; 
-        padding: 6px 15px; 
-        border-radius: 4px; 
-        text-transform: uppercase; 
-        letter-spacing: 1px;
-        transition: all 0.3s ease;
-        background-color: rgba(0, 255, 65, 0.05);
-    " onmouseover="this.style.backgroundColor='#00ff41'; this.style.color='#000';" 
-       onmouseout="this.style.backgroundColor='rgba(0, 255, 65, 0.05)'; this.style.color='#00ff41';">
-        [ SOVEREIGN PROTOCOLS ]
-    </a>
-</li>
-
+            <a href="kaggle.html">Kaggle</a>
+            <a href="#">SQL</a>
+            <a href="data-strategy.html">Strategy</a>
+            <a href="protocols.html" class="protocol-link">Protocols</a>
         </div>
     </nav>
 
@@ -158,85 +162,53 @@
         </div>
 
         <div class="status-panel">
-            <div class="status-header">Live Infrastructure Status</div>
-            <div class="status-item">
-                <span>Google Tag Manager:</span>
-                <span class="status-pill pill-active">GTM-MGTFH25T Active</span>
+            <div class="status-header" style="color: var(--gold-bright); font-size: 12px; text-transform: uppercase; margin-bottom: 10px; font-weight: bold;">Infrastructure Monitoring</div>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <span>GTM Container:</span>
+                <span style="color: #238636; font-weight: bold;">GTM-MGTFH25T ACTIVE</span>
             </div>
-            <div class="status-item">
-    <span>EEA Consent Signals:</span>
-    <span id="consent-status-pill" class="status-pill pill-alert">Action Required</span>
-</div>
-
-    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(10, 25, 47, 0.95); border: 1px solid var(--gold-bright); padding: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px); max-width: 600px;">
-    <div style="color: var(--gold-bright); font-weight: bold; font-size: 16px; letter-spacing: 1px;">🛡️ CONSENT MANAGEMENT SYSTEM</div>
-    <p style="color: var(--slate); font-size: 13px; margin: 0; line-height: 1.6;">
-        Smyrna & Sable uses cookies to analyze traffic and optimize your "Data Lab" experience. We support <strong>GDPR & Consent Mode V2</strong> compliance. Choose your data preference:
-    </p>
-    <div style="display: flex; gap: 10px; justify-content: flex-end;">
-        <button onclick="updateConsent(false)" style="background: transparent; border: 1px solid var(--slate); color: var(--slate); padding: 8px 15px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;">REJECT ALL</button>
-        <button onclick="updateConsent(true)" style="background: var(--gold-bright); border: 1px solid var(--gold-bright); color: var(--navy-deep); padding: 8px 15px; cursor: pointer; font-size: 12px; font-weight: bold; transition: 0.3s;">ACCEPT ALL</button>
+            <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px;">
+                <span>EEA Consent Signals:</span>
+                <span id="consent-status-pill" style="color: #da3633; font-weight: bold;">ACTION REQUIRED</span>
+            </div>
+        </div>
     </div>
-</div>
 
-<script>
-    // Consent Mode V2 Logic
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    <section class="sovereign-cta">
+        <h2>The Sovereign Protocols</h2>
+        <p>Beyond standard analytics. Engineered within the Smyrna & Sable Technical Lab to transcend digital marketing limitations and enforce data governance.</p>
+        <a href="protocols.html" class="lab-btn">[ ENTER THE LABORATORY ]</a>
+    </section>
 
-    // Default: Deny everything (GDPR compliant)
-    gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'analytics_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
-    });
+    <footer>
+        <p>© 2026 SMYRNA & SABLE TECHNICAL LAB // SYSTEM_STATUS: OPERATIONAL</p>
+    </footer>
 
-    function updateConsent(isAccepted) {
-        const status = isAccepted ? 'granted' : 'denied';
-        
-        gtag('consent', 'update', {
-            'ad_storage': status,
-            'analytics_storage': status,
-            'ad_user_data': status,
-            'ad_personalization': status
-        });
-
-        // Hide banner
-        document.getElementById('cookie-banner').style.display = 'none';
-        
-        // Show success in console for recruiters to see
-        console.log("Smyrna & Sable: Consent Mode V2 Updated to " + status);
-        
-        // Update the status panel on the page (UI improvement)
-        const signals = document.querySelectorAll('.status-pill');
-        if(isAccepted && signals[1]) {
-            signals[1].innerText = 'Signals: GRANTED';
-            signals[1].style.background = '#238636';
-        }
-    }
-</script>
-<section style="background-color: #050505; color: white; padding: 100px 20px; border-top: 1px solid #1a1a1a; text-align: center;">
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-family: 'Roboto Mono', monospace; color: #00ff41; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase;">
-            The Sovereign Protocols
-        </h2>
-        <p style="color: #888; margin: 25px auto; font-size: 1.1rem; line-height: 1.6; font-family: 'Inter', sans-serif;">
-            Beyond standard analytics. Engineered within the Smyrna & Sable Technical Lab to transcend digital marketing limitations and enforce data governance.
+    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(10, 25, 47, 0.98); border: 1px solid var(--gold-bright); padding: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px); max-width: 600px;">
+        <div style="color: var(--gold-bright); font-weight: bold; font-size: 14px; letter-spacing: 1px;">🛡️ CONSENT MANAGEMENT SYSTEM</div>
+        <p style="color: var(--slate); font-size: 12px; margin: 0; line-height: 1.6;">
+            We support <strong>GDPR & Consent Mode V2</strong> compliance.
         </p>
-        <a href="protocols.html" style="display: inline-block; padding: 18px 40px; border: 1px solid #00ff41; color: #00ff41; text-decoration: none; font-family: 'Roboto Mono', monospace; font-weight: bold; letter-spacing: 1px; margin-top: 30px; transition: all 0.3s ease; background: transparent;" 
-           onmouseover="this.style.backgroundColor='#00ff41'; this.style.color='#000';" 
-           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#00ff41';">
-            [ ENTER THE LABORATORY ]
-        </a>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button onclick="updateConsent(false)" style="background: transparent; border: 1px solid var(--slate); color: var(--slate); padding: 8px 15px; cursor: pointer; font-size: 10px; font-weight: bold;">REJECT</button>
+            <button onclick="updateConsent(true)" style="background: var(--gold-bright); border: 1px solid var(--gold-bright); color: var(--navy-deep); padding: 8px 15px; cursor: pointer; font-size: 10px; font-weight: bold;">ACCEPT ALL</button>
+        </div>
     </div>
-</section>
 
-<footer style="background-color: #000; color: #444; padding: 40px 20px; text-align: center; font-family: 'Roboto Mono', monospace; font-size: 0.8rem; border-top: 1px solid #111;">
-    <p>© 2026 SMYRNA & SABLE TECHNICAL LAB // ALL RIGHTS RESERVED.</p>
-    <p style="margin-top: 10px; color: #222;">SYSTEM_STATUS: OPERATIONAL</p>
-</footer>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', {'ad_storage': 'denied', 'analytics_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'wait_for_update': 500});
 
+        function updateConsent(isAccepted) {
+            const status = isAccepted ? 'granted' : 'denied';
+            gtag('consent', 'update', {'ad_storage': status, 'analytics_storage': status, 'ad_user_data': status, 'ad_personalization': status});
+            document.getElementById('cookie-banner').style.display = 'none';
+            if(isAccepted) {
+                document.getElementById('consent-status-pill').innerText = 'SIGNALS: GRANTED';
+                document.getElementById('consent-status-pill').style.color = '#238636';
+            }
+        }
+    </script>
 </body>
 </html>
