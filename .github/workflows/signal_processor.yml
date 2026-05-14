@@ -1,10 +1,23 @@
 name: Sovereign Signal Processor
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [waste_oracle_signal]
 
 jobs:
-  test_job:
+  analyze_signal:
     runs-on: ubuntu-latest
     steps:
-      - name: Simple Hello
-        run: echo "Lab is waking up!"
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Run Waste Oracle Engine
+        env:
+          SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }}
+        run: |
+          python scripts/waste_oracle_engine.py '${{ github.event.client_payload || "{\"user_agent\": \"Manual-Test\", \"path\": \"/lab\"}" }}'
