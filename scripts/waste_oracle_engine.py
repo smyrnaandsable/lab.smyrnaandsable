@@ -5,13 +5,11 @@ from datetime import datetime
 
 def process_signal(payload_str):
     try:
-        # Load the signal data
-        payload = json.loads(payload_str.replace("'", '"'))
-        
-        # Basic Signal Integrity Check (The "Oracle" logic starts here)
-        is_bot = False
-        if "bot" in payload.get("user_agent", "").lower():
-            is_bot = True
+        # Eğer gelen veri "manual_trigger" veya boşsa, varsayılan bir veri oluştur
+        if not payload_str or payload_str == "manual_trigger":
+            payload = {"user_agent": "Manual-Test", "path": "/lab"}
+        else:
+            payload = json.loads(payload_str.replace("'", '"'))
             
         status = "BLOCKED" if is_bot else "VERIFIED"
         
