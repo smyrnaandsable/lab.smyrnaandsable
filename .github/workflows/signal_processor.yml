@@ -16,8 +16,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run Waste Oracle Engine
+      - name: Run Engine
         env:
           SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }}
         run: |
-          python scripts/waste_oracle_engine.py '${{ github.event.client_payload || "{\"user_agent\": \"Manual-Test\", \"path\": \"/lab\"}" }}'
+          # Önce dosya orada mı kontrol et, sonra çalıştır
+          ls -R
+          python scripts/waste_oracle_engine.py "manual_trigger"
