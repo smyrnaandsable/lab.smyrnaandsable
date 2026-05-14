@@ -7,6 +7,9 @@ on:
 jobs:
   analyze_signal:
     runs-on: ubuntu-latest
+    # Bu izin, GitHub'ın kendi dosyalarına yazabilmesi için şart
+    permissions:
+      contents: write
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -16,10 +19,16 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run Engine
+      - name: Run Waste Oracle Engine
         env:
           SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }}
         run: |
-          # Önce dosya orada mı kontrol et, sonra çalıştır
-          ls -R
-          python scripts/waste_oracle_engine.py "manual_trigger"
+          python scripts/waste_oracle_engine.py '${{ github.event.client_payload || "{\"user_agent\": \"Manual-Test\", \"path\": \"/lab\"}" }}'
+
+      - name: Commit and Push Logs
+        run: |
+          git config --global user.name 'Sovereign Lab Bot'
+          git config --global user.email 'lab@smyrnaandsable.com'
+          git add logs/signal_history.json
+          git commit -m "System: Update Signal Logs [Automated]" || echo "No changes to commit"
+          git push
