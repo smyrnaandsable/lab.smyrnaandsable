@@ -210,5 +210,50 @@
             }
         }
     </script>
+    // Smyrna & Sable - Signal Dispatcher Module
+const SignalDispatcher = {
+    config: {
+        owner: "ceylanbelin", // Your GitHub Username
+        repo: "smyrna-sable-lab", // Your Repository Name
+        endpoint: "dispatches"
+    },
+
+    async send(data) {
+        // Warning: Public tokens are risky. For a prototype, we use a restricted PAT.
+        // In a production environment, we would use a middle-layer Worker.
+        const TOKEN = "YOUR_GITHUB_SECRET_TOKEN"; 
+        
+        const url = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/${this.config.endpoint}`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${TOKEN}`,
+                    'Accept': 'application/vnd.github.v3+json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    event_type: 'waste_oracle_signal',
+                    client_payload: data
+                })
+            });
+            
+            if (response.ok) console.log("Signal ingested by Sovereign Lab.");
+        } catch (err) {
+            console.error("Signal Dispatch Failed:", err);
+        }
+    }
+};
+
+// Auto-trigger on page load
+window.addEventListener('DOMContentLoaded', () => {
+    SignalDispatcher.send({
+        path: window.location.pathname,
+        user_agent: navigator.userAgent,
+        screen_resolution: `${window.screen.width}x${window.screen.height}`
+    });
+});
+
 </body>
 </html>
