@@ -16,6 +16,8 @@ jobs:
           python-version: '3.9'
 
       - name: Execute Waste Oracle Engine
+        env:
+          # İşte burası! GitHub senin kaydettiğin Secret'ı burada kullanacak.
+          SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }} 
         run: |
-          # Python script will process the signal data from client_payload
           python scripts/waste_oracle_engine.py '${{ github.event.client_payload }}'
