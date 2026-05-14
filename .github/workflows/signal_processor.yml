@@ -2,6 +2,7 @@ name: Sovereign Signal Processor
 on:
   repository_dispatch:
     types: [waste_oracle_signal]
+  workflow_dispatch: # Bu satır "Run workflow" butonunu getirir!
 
 jobs:
   analyze_signal:
@@ -17,7 +18,7 @@ jobs:
 
       - name: Execute Waste Oracle Engine
         env:
-          # İşte burası! GitHub senin kaydettiğin Secret'ı burada kullanacak.
           SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }} 
         run: |
-          python scripts/waste_oracle_engine.py '${{ github.event.client_payload }}'
+          # Manuel çalıştırırken payload boş olmasın diye bir varsayılan ekledik
+          python scripts/waste_oracle_engine.py '${{ github.event.client_payload || "{\"user_agent\": \"Manual-Test\", \"path\": \"/lab\"}" }}'
