@@ -221,7 +221,7 @@ const SignalDispatcher = {
     async send(data) {
         // Warning: Public tokens are risky. For a prototype, we use a restricted PAT.
         // In a production environment, we would use a middle-layer Worker.
-        const TOKEN = "YOUR_GITHUB_SECRET_TOKEN"; 
+        const TOKEN = ""; //
         
         const url = `https://api.github.com/repos/${this.config.owner}/${this.config.repo}/${this.config.endpoint}`;
         
