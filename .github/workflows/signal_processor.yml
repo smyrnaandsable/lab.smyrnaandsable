@@ -24,14 +24,14 @@ jobs:
           SIGNAL_KEY: ${{ secrets.SIGNAL_TOKEN }}
         run: |
           python scripts/waste_oracle_engine.py "manual_trigger"
-          # Klasör oluştu mu kontrol et ve ekrana yaz
-          ls -R logs/ || echo "Logs folder not found yet"
+          # Dosyanın oluştuğunu GitHub'a ispatlayalım
+          ls -R logs
 
       - name: Commit and Push Logs
         run: |
           git config --global user.name 'Sovereign Lab Bot'
           git config --global user.email 'lab@smyrnaandsable.com'
-          git add logs/signal_history.json
-          # Değişiklik varsa kaydet, yoksa sessizce geç
-          git commit -m "System: Update Signal Logs" || exit 0
+          # Eğer dosya yoksa hata vermemesi için '|| true' ekledik
+          git add logs/signal_history.json || true
+          git commit -m "System: Update Signal Logs" || echo "No changes"
           git push
