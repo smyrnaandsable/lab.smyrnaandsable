@@ -255,10 +255,9 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+<script>
 async function sendSignal(customToken) {
-    // Şifreyi kodun içinden tamamen kaldırdık, dışarıdan alacağız
     const GITHUB_TOKEN = customToken; 
-    
     const REPO_OWNER = "ceylanbelin"; 
     const REPO_NAME = "Waste-Oracle"; 
 
@@ -292,6 +291,11 @@ async function sendSignal(customToken) {
         console.error("⚠️ Sistem uyarısı:", error);
     }
 }
+</script>
+
+<button onclick="sendSignal('BURAYA_YENI_TOKENI_YAZ')" style="padding: 15px; background: #FFC107; color: black; font-weight: bold; font-size: 16px; border: none; border-radius: 5px; position: fixed; bottom: 20px; left: 20px; z-index: 99999;">
+    ⚡ Kahin'i Tetikle
+</button>
 
 </body>
 </html>
