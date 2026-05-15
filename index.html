@@ -255,5 +255,43 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+async function sendSignal(customToken) {
+    // Şifreyi kodun içinden tamamen kaldırdık, dışarıdan alacağız
+    const GITHUB_TOKEN = customToken; 
+    
+    const REPO_OWNER = "ceylanbelin"; 
+    const REPO_NAME = "Waste-Oracle"; 
+
+    const payload = {
+        event_type: "waste_oracle_signal",
+        client_payload: {
+            user_agent: navigator.userAgent,
+            path: window.location.pathname,
+            screen_res: `${window.screen.width}x${window.screen.height}`,
+            timestamp: new Date().toISOString()
+        }
+    };
+
+    try {
+        const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${GITHUB_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+            console.log("🚀 Sinyal Kahin'e başarıyla fırlatıldı!");
+        } else {
+            console.error("❌ Bağlantı durumu:", response.status);
+        }
+    } catch (error) {
+        console.error("⚠️ Sistem uyarısı:", error);
+    }
+}
+
 </body>
 </html>
