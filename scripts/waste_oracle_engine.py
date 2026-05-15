@@ -31,26 +31,20 @@ def process_signal(payload_str):
         print(f"Error processing signal: {e}")
 
 def save_log(entry):
-    # Projenin ana dizinini bul
-    base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    log_dir = os.path.join(base_dir, 'logs')
-    log_file = os.path.join(log_dir, 'signal_history.json')
+    # Bu satır dosyanın tam ana dizine (logs klasörüne) gitmesini sağlar
+    log_file = os.path.join(os.getcwd(), 'logs', 'signal_history.json')
     
-    # Klasörü oluştur
-    os.makedirs(log_dir, exist_ok=True)
+    os.makedirs(os.path.dirname(log_file), exist_ok=True)
     
     data = []
     if os.path.exists(log_file):
-        try:
-            with open(log_file, 'r') as f:
-                data = json.load(f)
-        except:
-            data = []
+        with open(log_file, 'r') as f:
+            data = json.load(f)
             
     data.append(entry)
     with open(log_file, 'w') as f:
         json.dump(data, f, indent=4)
-    print(f"Log successfully saved to: {log_file}") # Bu satır çok önemli!
+    print(f"File created at: {log_file}")
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
