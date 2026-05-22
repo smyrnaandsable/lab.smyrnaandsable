@@ -10,5 +10,11 @@
         "path": "/lab",
         "integrity_status": "VERIFIED",
         "origin": "Manual-Test"
+    },
+    {
+        "timestamp": "2026-05-22T13:35:58.768953",
+        "path": "/lab",
+        "integrity_status": "VERIFIED",
+        "origin": "Manual-Test"
     }
 ]
