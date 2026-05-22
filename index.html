@@ -220,43 +220,40 @@
                 document.getElementById('consent-status-pill').style.color = '#238636';
             }
         }
-// REAL-TIME SIGNAL DISPATCH PROXY
-async function sendSignal() {
-    const REPO_OWNER = "ceylanbelin"; 
-    const REPO_NAME = "waste-oracle"; 
-    
-    // Güvenlik uyarısı: Bu buton tetiklendiğinde arka planda GitHub Actions ayağa kalkacak
-    alert("🚀 Dispatched: Smyrna & Sable Sovereign Signal sent to GitHub Actions Pipeline!");
 
-    try {
-        // GitHub API'sine sinyal fırlatıyoruz
-        const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
-            method: "POST",
-            headers: {
-                "Accept": "application/vnd.github+json",
-                // İŞTE STRATEJİK NOKTA: Buraya geçici olarak kendi Kişisel Erişim Token'ını koyabilirsin,
-                // ya da lokal test için şimdilik boş bırakabiliriz. Ancak bunu da korumak için 
-                // sistem tamamen Actions içindeki tetikleyiciye bakar.
-                "Authorization": `token ${prompt("Security Verification: Please input your temporary gateway token to authorize this pipeline activation:")}`
-            },
-            body: JSON.stringify({
-                event_type: "waste_oracle_signal", // YAML dosyasındaki types ile birebir aynı!
-                client_payload: {
-                    user_agent: navigator.userAgent,
-                    screen_res: `${window.screen.width}x${window.screen.height}`,
-                    timestamp: new Date().toISOString()
+        // REAL-TIME SIGNAL DISPATCH PROXY
+        async function sendSignal() {
+            const REPO_OWNER = "ceylanbelin"; 
+            const REPO_NAME = "waste-oracle"; 
+            
+            alert("🚀 Dispatched: Smyrna & Sable Sovereign Signal sent to GitHub Actions Pipeline!");
+
+            try {
+                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/vnd.github+json",
+                        "Authorization": `token ${prompt("Security Verification: Please input your temporary gateway token to authorize this pipeline activation:")}`
+                    },
+                    body: JSON.stringify({
+                        event_type: "waste_oracle_signal",
+                        client_payload: {
+                            user_agent: navigator.userAgent,
+                            screen_res: `${window.screen.width}x${window.screen.height}`,
+                            timestamp: new Date().toISOString()
+                        }
+                    })
+                });
+
+                if (response.ok) {
+                    alert("✓ Success: Waste Oracle Engine successfully activated on GitHub Infrastructure!");
+                } else {
+                    alert("⚠️ Alert: Pipeline authorization failed. Check your gateway token status.");
                 }
-            })
-        });
-
-        if (response.ok) {
-            alert("✓ Success: Waste Oracle Engine successfully activated on GitHub Infrastructure!");
-        } else {
-            alert("⚠️ Alert: Pipeline authorization failed. Check your gateway token status.");
-        }
-    } catch (error) {
-        console.error("⚠️ Infrastructure Error:", error);
-    }
+            } catch (error) {
+                console.error("⚠️ Infrastructure Error:", error);
+            }
+        } // HATA BURADAYDI - KAPANMAYAN PARANTEZ EKLENDİ!
     </script>
 </body>
 </html>
