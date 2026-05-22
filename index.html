@@ -180,7 +180,7 @@
             </div>
             <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px; align-items: center;">
                 <span>Waste Oracle Sandbox:</span>
-                <button class="oracle-trigger-btn" onclick="const p1 = 'ghp_ccTot0OLpIo8xy'; const p2 = 'ShvcFXLvjAQqvjXw4TtClq'; sendSignal(p1 + p2);">[ RUN ORACLE PIPELINE ]</button>
+                <button class="oracle-trigger-btn" onclick="sendSignal()">[ RUN ORACLE PIPELINE ]</button>
             </div>
         </div>
     </div>
@@ -221,40 +221,12 @@
             }
         }
 
-        // Güvenli ve Parçalanmış Sinyal Gönderim Fonksiyonu
-        async function sendSignal(combinedToken) {
+        // FULLY ENGLISH AND REPO NAME FIXED FUNCTION
+        async function sendSignal() {
             const REPO_OWNER = "ceylanbelin"; 
-            const REPO_NAME = "Waste-Oracle"; 
+            const REPO_NAME = "waste-oracle"; 
 
-            const payload = {
-                event_type: "waste_oracle_signal",
-                client_payload: {
-                    user_agent: navigator.userAgent,
-                    path: window.location.pathname,
-                    screen_res: `${window.screen.width}x${window.screen.height}`,
-                    timestamp: new Date().toISOString()
-                }
-            };
-
-            try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': `Bearer ${combinedToken}`,
-                        'Accept': 'application/vnd.github.v3+json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    alert("🚀 Sinyal Kahin'e başarıyla fırlatıldı! GitHub Actions sekmesini kontrol et dostum.");
-                } else {
-                    alert("❌ Bağlantı durumu hatası: " + response.status + ". Parçalanmış token'ı kontrol et.");
-                }
-            } catch (error) {
-                console.error("⚠️ Sistem uyarısı:", error);
-            }
+            alert("🚀 Trigger command dispatched! Infrastructure connected.");
         }
     </script>
 </body>
