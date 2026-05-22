@@ -1,4 +1,4 @@
-name: Sovereign Signal Processor
+Name: Sovereign Signal Processor
 on:
   workflow_dispatch:
   repository_dispatch:
@@ -21,6 +21,9 @@ jobs:
 
       - name: Run Engine
         run: python scripts/waste_oracle_engine.py "manual_trigger"
+        # İŞTE BURAYA KASADAKİ ŞİFREYİ BAĞLADIK
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
 
       - name: Commit and Push Logs
         run: |
@@ -29,3 +32,6 @@ jobs:
           git add logs/signal_history.json
           git commit -m "System: Update Signal Logs" || exit 0
           git push
+        # Commit işlemi yaparken de yetki hatası almamak için buraya da ekledik
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
