@@ -1,7 +1,10 @@
 name: Sovereign Signal Processor
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Manuel tetikleme mekanizmamız hala aktif
+  schedule:
+    # UTC saatine göre her Salı sabah 06:00 (TSİ ile tam sabah 09:00'da uyanır!)
+    - cron: '0 6 * * 2'
   repository_dispatch:
     types: [waste_oracle_signal]
 
@@ -21,7 +24,7 @@ jobs:
           python-version: '3.9'
 
       - name: Run Engine
-        run: python scripts/waste_oracle_engine.py "manual_trigger"
+        run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
         env:
           GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
 
@@ -32,7 +35,7 @@ jobs:
           mkdir -p logs
           touch logs/signal_history.json
           git add logs/signal_history.json
-          git commit -m "System: Update Signal Logs" || echo "No changes to commit"
+          git commit -m "System: Automated Weekly Marketing Budget Audit" || echo "No changes to commit"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
