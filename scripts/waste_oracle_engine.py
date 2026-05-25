@@ -2,9 +2,9 @@ import sys
 import json
 import os
 from datetime import datetime
+import random
 
 def save_log(entry):
-    # En güvenli yol belirleme yöntemi
     base_dir = os.getcwd()
     log_dir = os.path.join(base_dir, 'logs')
     log_file = os.path.join(log_dir, 'signal_history.json')
@@ -16,7 +16,8 @@ def save_log(entry):
         try:
             with open(log_file, 'r') as f:
                 data = json.load(f)
-        except: data = []
+        except: 
+            data = []
             
     data.append(entry)
     with open(log_file, 'w') as f:
@@ -24,23 +25,32 @@ def save_log(entry):
     print(f"Success: Log saved to {log_file}")
 
 if __name__ == "__main__":
-    # Manuel tetikleme koruması
-    arg = sys.argv[1] if len(sys.argv) > 1 else "{}"
+    # Tetikleyici argümanını al
+    arg = sys.argv[1] if len(sys.argv) > 1 else "manual_trigger"
     
-    # JSON ayrıştırma hatasını önlemek için basit bir kontrol
-    try:
-        if arg == "manual_trigger":
-            payload = {"user_agent": "Manual-Test", "path": "/lab"}
-        else:
-            payload = json.loads(arg)
-    except:
-        payload = {"user_agent": "Unknown-Error", "path": "error"}
+    # Varsayılan pazarlama ve veri akışı metrikleri (Simülasyon Değerleri)
+    gtm_server_side_health = "OPTIMAL"
+    consent_mode_loss_rate = "0.0%"
+    budget_anomaly_detected = False
+    protection_score = 100
+    trigger_type = "Manual Audit"
 
-    log_entry = {
-        "timestamp": datetime.now().isoformat(),
-        "path": payload.get("path", "unknown"),
-        "integrity_status": "VERIFIED",
-        "origin": payload.get("user_agent", "unknown")
-    }
+    # Eğer her Salı çalışacak otomatik mekanizma tetiklendiyse
+    if arg == "scheduled_bureau_check":
+        trigger_type = "Automated Weekly Audit"
+        # Salı sabahları veri akışını simüle et (Ufak sapmalar eklenebilir)
+        protection_score = random.randint(95, 100)
+        if protection_score < 100:
+            consent_mode_loss_rate = f"{round(random.uniform(0.5, 2.1), 1)}%"
+            gtm_server_side_health = "STABLE"
     
-    save_log(log_entry)
+    elif arg != "manual_trigger":
+        # Eğer dışarıdan bir JSON objesi geldiyse onu ayrıştır
+        try:
+            payload = json.loads(arg)
+            trigger_type = "External Signal"
+        except:
+            trigger_type = "Unknown Trigger"
+
+    # Pazarlama Bütçesi Koruma ve Veri Yönetişimi Odaklı Log Girişi
+    log_entry
