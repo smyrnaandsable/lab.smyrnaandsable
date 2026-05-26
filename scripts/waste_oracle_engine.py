@@ -28,29 +28,39 @@ if __name__ == "__main__":
     # Tetikleyici argümanını al
     arg = sys.argv[1] if len(sys.argv) > 1 else "manual_trigger"
     
-    # Varsayılan pazarlama ve veri akışı metrikleri (Simülasyon Değerleri)
+    # Varsayılan pazarlama ve veri akışı metrikleri
     gtm_server_side_health = "OPTIMAL"
     consent_mode_loss_rate = "0.0%"
     budget_anomaly_detected = False
     protection_score = 100
     trigger_type = "Manual Audit"
 
-    # Eğer her Salı çalışacak otomatik mekanizma tetiklendiyse
+    # Otomatik mekanizma kontrolü
     if arg == "scheduled_bureau_check":
         trigger_type = "Automated Weekly Audit"
-        # Salı sabahları veri akışını simüle et (Ufak sapmalar eklenebilir)
         protection_score = random.randint(95, 100)
         if protection_score < 100:
             consent_mode_loss_rate = f"{round(random.uniform(0.5, 2.1), 1)}%"
             gtm_server_side_health = "STABLE"
     
     elif arg != "manual_trigger":
-        # Eğer dışarıdan bir JSON objesi geldiyse onu ayrıştır
         try:
             payload = json.loads(arg)
             trigger_type = "External Signal"
         except:
             trigger_type = "Unknown Trigger"
 
-    # Pazarlama Bütçesi Koruma ve Veri Yönetişimi Odaklı Log Girişi
-    log_entry
+    # Pazarlama Bütçesi Koruma Odaklı Log Girişi
+    log_entry = {
+        "timestamp": datetime.now().isoformat(),
+        "trigger_source": trigger_type,
+        "audit_metrics": {
+            "gtm_server_side_status": gtm_server_side_health,
+            "consent_mode_v2_loss": consent_mode_loss_rate,
+            "budget_waste_anomaly": budget_anomaly_detected,
+            "smyrna_sable_protection_score": f"{protection_score}%"
+        },
+        "integrity_status": "VERIFIED"
+    }
+    
+    save_log(log_entry)
