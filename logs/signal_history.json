@@ -16,5 +16,16 @@
         "path": "/lab",
         "integrity_status": "VERIFIED",
         "origin": "Manual-Test"
+    },
+    {
+        "timestamp": "2026-05-26T19:31:45.230608",
+        "trigger_source": "Automated Weekly Audit",
+        "audit_metrics": {
+            "gtm_server_side_status": "OPTIMAL",
+            "consent_mode_v2_loss": "0.0%",
+            "budget_waste_anomaly": false,
+            "smyrna_sable_protection_score": "100%"
+        },
+        "integrity_status": "VERIFIED"
     }
 ]
