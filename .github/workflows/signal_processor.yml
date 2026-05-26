@@ -1,9 +1,13 @@
 name: Sovereign Signal Processor
 
 on:
-  workflow_dispatch: # Manuel tetikleme mekanizmamız hala aktif
+  workflow_dispatch:
+    inputs:
+      test_run:
+        description: 'Force Manual Run'
+        required: false
+        default: 'true'
   schedule:
-    # UTC saatine göre her Salı sabah 06:00 (TSİ ile tam sabah 09:00'da uyanır!)
     - cron: '0 6 * * 2'
   repository_dispatch:
     types: [waste_oracle_signal]
@@ -24,12 +28,12 @@ jobs:
           python-version: '3.9'
 
       - name: Run Engine
-        run: python waste_oracle_engine.py "scheduled_bureau_check"
+        run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
         env:
           GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
 
       - name: Commit and Push Logs
-        run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
+        run: |
           git config --global user.name 'Sovereign Lab Bot'
           git config --global user.email 'lab@smyrnaandsable.com'
           mkdir -p logs
