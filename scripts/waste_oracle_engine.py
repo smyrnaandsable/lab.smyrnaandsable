@@ -25,7 +25,7 @@ def save_log(entry):
     print(f"Success: Log saved to {log_file}")
 
 if __name__ == "__main__":
-    # Tetikleyici argümanını al
+    # Tetikleyici argümanını alalım
     arg = sys.argv[1] if len(sys.argv) > 1 else "manual_trigger"
     
     # Varsayılan pazarlama ve veri akışı metrikleri
