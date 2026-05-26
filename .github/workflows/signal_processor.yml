@@ -24,7 +24,7 @@ jobs:
           python-version: '3.9'
 
       - name: Run Engine
-        run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
+        run: python waste_oracle_engine.py "scheduled_bureau_check"
         env:
           GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
 
