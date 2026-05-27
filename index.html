@@ -226,6 +226,13 @@
             const REPO_OWNER = "ceylanbelin"; 
             const REPO_NAME = "waste-oracle"; 
             
+            const userInput = prompt("Security Verification: Please input your temporary gateway token to authorize this pipeline activation:");
+            
+            if (!userInput) {
+                alert("⚠️ Request cancelled. Token is required.");
+                return;
+            }
+
             alert("🚀 Dispatched: Smyrna & Sable Sovereign Signal sent to GitHub Actions Pipeline!");
 
             try {
@@ -233,7 +240,8 @@
                     method: "POST",
                     headers: {
                         "Accept": "application/vnd.github+json",
-                        "Authorization": `token ${prompt("Security Verification: Please input your temporary gateway token to authorize this pipeline activation:")}`
+                        "Authorization": `Bearer ${userInput.trim()}`,
+                        "X-GitHub-Api-Version": "2022-11-28"
                     },
                     body: JSON.stringify({
                         event_type: "waste_oracle_signal",
@@ -253,7 +261,7 @@
             } catch (error) {
                 console.error("⚠️ Infrastructure Error:", error);
             }
-        } // HATA BURADAYDI - KAPANMAYAN PARANTEZ EKLENDİ!
+        }
     </script>
 </body>
 </html>
