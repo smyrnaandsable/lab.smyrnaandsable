@@ -2,11 +2,6 @@ name: Sovereign Signal Processor
 
 on:
   workflow_dispatch:
-    inputs:
-      test_run:
-        description: 'Force Manual Run'
-        required: false
-        default: 'true'
   schedule:
     - cron: '0 6 * * 2'
   repository_dispatch:
@@ -30,7 +25,7 @@ jobs:
       - name: Run Engine
         run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
         env:
-          GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
+          ORACLE_TOKEN: ${{ secrets.ORACLE_TOKEN }}
 
       - name: Commit and Push Logs
         run: |
@@ -41,6 +36,5 @@ jobs:
           git add logs/signal_history.json
           git commit -m "System: Automated Weekly Marketing Budget Audit" || echo "No changes to commit"
           git push origin main
-
         env:
-          GITHUB_TOKEN: ${{ secrets.ORACLE_TOKEN }}
+          ORACLE_TOKEN: ${{ secrets.ORACLE_TOKEN }}
