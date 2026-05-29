@@ -4,9 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       reason:
-        description: 'Tetikleme Nedeni'
+        description: 'Trigger reason'
         required: false
-        default: 'Manuel Audit'
+        default: 'Manual Audit'
   schedule:
     - cron: '0 6 * * 2'
 
@@ -33,5 +33,5 @@ jobs:
           git config --global user.name "Sovereign-Oracle-Bot"
           git config --global user.email "bot@smyrnaandsable.com"
           git add logs/signal_history.json
-          git commit -m "Otonom Sinyal İşlendi: $(date)" || echo "Değişiklik yok, devam."
+          git commit -m "Otonom Sinyal İşlendi: $(date)" || echo "No changes to commit, proceeding."
           git push
