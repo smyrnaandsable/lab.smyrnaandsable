@@ -49,5 +49,16 @@
             "smyrna_sable_protection_score": "96%"
         },
         "integrity_status": "VERIFIED"
+    },
+    {
+        "timestamp": "2026-05-29T19:44:12.413646",
+        "trigger_source": "Manual Audit",
+        "audit_metrics": {
+            "gtm_server_side_status": "OPTIMAL",
+            "consent_mode_v2_loss": "0.0%",
+            "budget_waste_anomaly": false,
+            "smyrna_sable_protection_score": "100%"
+        },
+        "integrity_status": "VERIFIED"
     }
 ]
