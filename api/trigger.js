@@ -1,4 +1,4 @@
-// FORCE_DEPLOY_CACHE_BUSTER_V4: ORACLE_TOKEN_INTEGRATION
+// FORCE_DEPLOY_CACHE_BUSTER_V5: DEBUG_MODE_ENABLED
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
@@ -6,51 +6,41 @@ export default async function handler(req, res) {
 
     const REPO_OWNER = "smyrnaandsable"; 
     const REPO_NAME = "lab.smyrnaandsable";
-    
-    // ARTIK BURASI GÜNCELLENDİ: Vercel'deki yeni ORACLE_TOKEN değişkenini çekecek
     const TOKEN = process.env.ORACLE_TOKEN; 
 
-    if (!TOKEN || TOKEN.trim() === "") {
-        return res.status(500).json({ 
-            error: 'Configuration Error', 
-            details: 'ORACLE_TOKEN is missing or empty in Vercel Environment Variables.' 
-        });
+    if (!TOKEN) {
+        return res.status(500).json({ error: 'Environment Variable ORACLE_TOKEN not detected by serverless function.' });
     }
 
     try {
         const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
             method: "POST",
             headers: {
-                "Accept": "application/vnd.github+json",
-                "Authorization": `Bearer ${TOKEN.trim()}`,
-                "X-GitHub-Api-Version": "2022-11-28",
-                "User-Agent": "Smyrna-Sable-Vercel-Gateway"
+                "Accept": "application/vnd.github.v3+json", // v3 sürümü daha kararlıdır
+                "Authorization": `token ${TOKEN.trim()}`,   // Bearer yerine "token" anahtar kelimesini deniyoruz
+                "User-Agent": "Vercel-Serverless-Gateway"   // Basit bir User-Agent
             },
             body: JSON.stringify({
                 event_type: "waste_oracle_signal",
                 client_payload: {
-                    source: "Vercel Secure Serverless Proxy",
+                    source: "Vercel_Gateway_Debug",
                     timestamp: new Date().toISOString()
                 }
             })
         });
 
+        // HATA YAKALAMA VE DETAYLANDIRMA
+        const responseText = await response.text();
+        
         if (response.ok) {
-            return res.status(200).json({ 
-                success: true, 
-                message: 'Pipeline successfully activated with ORACLE_TOKEN!' 
-            });
+            return res.status(200).json({ success: true, message: 'Pipeline successfully activated!' });
         } else {
-            const errData = await response.text();
             return res.status(response.status).json({ 
-                error: `GitHub API Rejected (Status: ${response.status})`, 
-                details: errData 
+                error: `GitHub API rejected request. Status: ${response.status}`,
+                debug_details: responseText // BURASI BİZE HATANIN GERÇEK SEBEBİNİ (404, 401, 403) SÖYLEYECEK
             });
         }
     } catch (error) {
-        return res.status(500).json({ 
-            error: 'Infrastructure Error', 
-            details: error.message 
-        });
+        return res.status(500).json({ error: 'System error', details: error.message });
     }
 }
