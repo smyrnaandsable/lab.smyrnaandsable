@@ -2,19 +2,21 @@ name: Sovereign Signal Processor
 
 on:
   workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Tetikleme Nedeni'
+        required: false
+        default: 'Manuel Audit'
   schedule:
     - cron: '0 6 * * 2'
-  repository_dispatch:
-    types: [waste_oracle_signal]
-
-permissions:
-  contents: write
 
 jobs:
-  analyze_signal:
+  run-oracle:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - name: Checkout Code
+      - name: Checkout Repository
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -22,19 +24,14 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Run Engine
-        run: python scripts/waste_oracle_engine.py "scheduled_bureau_check"
-        env:
-          ORACLE_TOKEN: ${{ secrets.ORACLE_TOKEN }}
-
-      - name: Commit and Push Logs
+      - name: Execute Engine
         run: |
-          git config --global user.name 'Sovereign Lab Bot'
-          git config --global user.email 'lab@smyrnaandsable.com'
-          mkdir -p logs
-          touch logs/signal_history.json
+          python scripts/waste_oracle_engine.py
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "Sovereign-Oracle-Bot"
+          git config --global user.email "bot@smyrnaandsable.com"
           git add logs/signal_history.json
-          git commit -m "System: Automated Weekly Marketing Budget Audit" || echo "No changes to commit"
-          git push origin main
-        env:
-          ORACLE_TOKEN: ${{ secrets.ORACLE_TOKEN }}
+          git commit -m "Otonom Sinyal İşlendi: $(date)" || echo "Değişiklik yok, devam."
+          git push
