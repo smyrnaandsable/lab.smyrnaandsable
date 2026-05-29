@@ -6,7 +6,6 @@
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Smyrna & Sable | Evolving Data Lab</title>
@@ -136,7 +135,6 @@
 </head>
 <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
     <nav>
         <a href="index.html" class="logo">SMYRNA & SABLE</a>
         <div class="nav-links">
@@ -221,12 +219,12 @@
             }
         }
 
-        // FULLY AUTOMATED SECURE DISPATCH PROXY
+        // KORUMALI VERCEL KÖPRÜSÜNÜ TETİKLEYEN OTONOM FONKSİYON
         async function sendSignal() {
             alert("🚀 Activating Waste Oracle Pipeline via Secure Vercel Serverless Gateway...");
 
             try {
-                // İstek artık GitHub'a değil, kendi oluşturduğumuz gizli arka plan köprüsüne gidiyor
+                // İstek artık doğrudan GitHub'a değil, Vercel'deki o küçük harfli sunucusuz fonksiyona gidiyor
                 const response = await fetch('/api/trigger', {
                     method: "POST"
                 });
@@ -234,7 +232,7 @@
                 if (response.ok) {
                     alert("✓ Success: Sovereign Signal dispatched securely. GitHub Actions Engine is now RUNNING!");
                 } else {
-                    alert("⚠️ Gateway Error: Authorization handshake failed. Check server logs.");
+                    alert("⚠️ Gateway Error: Authorization handshake failed. Check your token in Vercel Vault.");
                 }
             } catch (error) {
                 console.error("⚠️ Network Infrastructure Error:", error);
