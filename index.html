@@ -221,45 +221,24 @@
             }
         }
 
-        // REAL-TIME SIGNAL DISPATCH PROXY
+        // FULLY AUTOMATED SECURE DISPATCH PROXY
         async function sendSignal() {
-            const REPO_OWNER = "ceylanbelin"; 
-            const REPO_NAME = "lab.smyrnaandsable"; 
-            
-            const userInput = prompt("Security Verification: Please input your temporary gateway token to authorize this pipeline activation:");
-            
-            if (!userInput) {
-                alert("⚠️ Request cancelled. Token is required.");
-                return;
-            }
-
-            alert("🚀 Dispatched: Smyrna & Sable Sovereign Signal sent to GitHub Actions Pipeline!");
+            alert("🚀 Activating Waste Oracle Pipeline via Secure Vercel Serverless Gateway...");
 
             try {
-                const response = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/dispatches`, {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/vnd.github+json",
-                        "Authorization": `Bearer ${userInput.trim()}`,
-                        "X-GitHub-Api-Version": "2022-11-28"
-                    },
-                    body: JSON.stringify({
-                        event_type: "waste_oracle_signal",
-                        client_payload: {
-                            user_agent: navigator.userAgent,
-                            screen_res: `${window.screen.width}x${window.screen.height}`,
-                            timestamp: new Date().toISOString()
-                        }
-                    })
+                // İstek artık GitHub'a değil, kendi oluşturduğumuz gizli arka plan köprüsüne gidiyor
+                const response = await fetch('/api/trigger', {
+                    method: "POST"
                 });
 
                 if (response.ok) {
-                    alert("✓ Success: Waste Oracle Engine successfully activated on GitHub Infrastructure!");
+                    alert("✓ Success: Sovereign Signal dispatched securely. GitHub Actions Engine is now RUNNING!");
                 } else {
-                    alert("⚠️ Alert: Pipeline authorization failed. Check your gateway token status.");
+                    alert("⚠️ Gateway Error: Authorization handshake failed. Check server logs.");
                 }
             } catch (error) {
-                console.error("⚠️ Infrastructure Error:", error);
+                console.error("⚠️ Network Infrastructure Error:", error);
+                alert("⚠️ Connection Failed: Network proxy error.");
             }
         }
     </script>
