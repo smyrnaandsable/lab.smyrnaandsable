@@ -1,115 +1,390 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Kaggle Projects</title>
-    
-    <style>
-        :root {
-            --navy-deep: #020c1b;
-            --navy-light: #0a192f;
-            --gold-bright: #FFD700;
-            --gold-muted: #C5A021;
-            --slate: #a8b2d1;
-            --white: #e6f1ff;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaggle Projects — Smyrna & Sable Lab</title>
+  <meta name="description" content="Kaggle data projects by Ceylan Belin — sustainability analysis, SQL pipelines, and data storytelling.">
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            background: radial-gradient(circle at center, var(--navy-light) 0%, var(--navy-deep) 100%);
-            background-image: url('dark-metal-texture.jpg'); /* Ana sayfadaki doku */
-            background-size: cover;
-            background-attachment: fixed;
-            color: var(--white); 
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 50px; background: rgba(2, 12, 27, 0.9); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-        }
+  <style>
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --gold-lt:  #D4A83A;
+      --green:    #1A6B3A;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
 
-        .logo { color: var(--gold-bright); font-weight: bold; text-decoration: none; letter-spacing: 2px; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .container { padding: 80px 20px; max-width: 900px; margin: 0 auto; text-align: center; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        h1 { color: var(--gold-bright); font-family: 'Georgia', serif; font-style: italic; font-size: 48px; margin-bottom: 40px; }
+    a { color: inherit; text-decoration: none; }
 
-        .project-card {
-            background: rgba(17, 34, 64, 0.85);
-            padding: 40px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.15);
-            text-align: left; transition: 0.3s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
 
-        .project-card:hover { border-color: var(--gold-bright); transform: translateY(-5px); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
 
-        .project-tag { color: var(--gold-bright); font-size: 12px; text-transform: uppercase; letter-spacing: 2px; display: block; margin-bottom: 10px; }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
 
-        h3 { font-size: 28px; margin: 10px 0; color: var(--white); }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); font-weight: 500; }
 
-        .tech-stack { margin: 20px 0; display: flex; gap: 10px; flex-wrap: wrap; }
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
 
-        .tech-pill { background: rgba(212, 175, 55, 0.1); color: var(--gold-bright); padding: 5px 12px; border-radius: 2px; font-size: 11px; font-weight: bold; }
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
 
-        .metrics-box { background: rgba(0,0,0,0.3); padding: 20px; border-radius: 4px; margin: 20px 0; }
-        
-        .metrics-box h4 { color: var(--gold-bright); margin-top: 0; font-size: 14px; text-transform: uppercase; }
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 72px 48px 64px;
+      border-bottom: 1px solid var(--border);
+      max-width: 760px;
+    }
 
-        .metrics-list { color: var(--slate); font-size: 14px; line-height: 1.8; padding-left: 20px; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+      transition: color 0.15s;
+    }
 
-        .btn-kaggle {
-            display: inline-block; margin-top: 30px; padding: 15px 30px;
-            border: 1px solid var(--gold-bright); color: var(--gold-bright);
-            text-decoration: none; font-size: 14px; font-weight: bold; letter-spacing: 1px;
-            transition: 0.3s;
-        }
+    .back-link:hover { color: var(--ink); }
 
-        .btn-kaggle:hover { background: var(--gold-bright); color: var(--navy-deep); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+    .page-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
 
-    </style>
+    .page-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .page-title strong { font-weight: 600; }
+
+    .page-intro {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      max-width: 600px;
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
+
+    .content-block {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .content-block:last-of-type { border-bottom: none; }
+
+    .block-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .block-title {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .block-body {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 640px;
+      margin-bottom: 36px;
+    }
+
+    /* ── TECH PILLS ── */
+    .tech-stack {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .tech-pill {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+    }
+
+    /* ── METRICS BOX ── */
+    .metrics-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin-bottom: 36px;
+    }
+
+    .metrics-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+      margin-bottom: 20px;
+    }
+
+    .metrics-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .metrics-list li {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+    }
+
+    .metrics-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .metrics-list li::before {
+      content: "—";
+      color: var(--gold);
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .metrics-list strong { color: var(--ink); font-weight: 600; }
+
+    /* ── HIGHLIGHT STAT ── */
+    .highlight-stat {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 24px 28px;
+      margin-bottom: 36px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .highlight-num {
+      font-size: 40px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .highlight-text {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+    }
+
+    .highlight-text strong { color: var(--ink); font-weight: 600; }
+
+    /* ── CTA ── */
+    .btn-primary {
+      display: inline-block;
+      padding: 11px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--ink-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .footer-sub { font-size: 11px; color: var(--ink-soft); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-soft); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .page-header { padding: 48px 24px; }
+      .content-wrap { padding: 0 24px; }
+      .highlight-stat { flex-direction: column; gap: 12px; }
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; padding: 40px 24px; }
+    }
+  </style>
 </head>
 <body>
-    <nav>
-        <a href="index.html" class="logo">SMYRNA & SABLE</a>
-        <a href="index.html" style="color: var(--slate); text-decoration: none; font-size: 13px;">← BACK TO LAB</a>
-    </nav>
 
-    <div class="container">
-        <h1>Kaggle Portfolio</h1>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-        <div class="project-card">
-            <span class="project-tag">Case Study: Sustainability</span>
-            <h3>9 Boyoz = 1 Tree</h3>
-            <p style="color: var(--slate); line-height: 1.6;">
-                A comprehensive data pipeline project connecting commercial sales performance to environmental reforestation efforts.
-            </p>
-            
-            <div class="tech-stack">
-                <span class="tech-pill">PYTHON (DATA SIMULATION)</span>
-                <span class="tech-pill">SQL (LOGIC TRANSFORMATION)</span>
-                <span class="tech-pill">DATA VISUALIZATION</span>
-            </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Lab Home</a>
+    <a href="index.html#articles">Articles</a>
+    <a href="protocols.html">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html" class="active">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
 
-            <div class="metrics-box">
-                <h4>Technical Execution:</h4>
-                <ul class="metrics-list">
-                    <li><strong>Engine:</strong> Simulated realistic sales data using Python/Pandas.</li>
-                    <li><strong>Transformation:</strong> Applied SQL logic to convert raw sales into tree planting metrics based on a 9:1 ratio.</li>
-                    <li><strong>Strategic Insight:</strong> Identified Chocolate Boyoz as the market leader with a 53.6% contribution to the "Boyoz Forest".</li>
-                </ul>
-            </div>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <a href="index.html" class="back-link">← Back to Lab</a>
+  <span class="page-label">Kaggle Portfolio</span>
+  <h1 class="page-title"><strong>Data Projects</strong></h1>
+  <p class="page-intro">
+    Hands-on data work — from sustainability pipelines to SQL scoring engines. Each project connects real-world problems to data-driven decisions.
+  </p>
+</div>
 
-            <a href="https://www.kaggle.com/code/ceylanbeln/sustainability-analysis-9-boyoz-1-tree" target="_blank" class="btn-kaggle">EXPLORE TECHNICAL WORKFLOW</a>
-        </div>
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <div class="content-block">
+    <span class="block-label">Case Study — Sustainability</span>
+    <h2 class="block-title">9 Boyoz = 1 Tree</h2>
+    <p class="block-body">
+      A data pipeline connecting commercial sales performance to environmental reforestation efforts. For every 9 units of İzmir's signature pastry sold, one tree is planted. The project translates a local product into a measurable sustainability metric.
+    </p>
+
+    <div class="tech-stack">
+      <span class="tech-pill">Python</span>
+      <span class="tech-pill">Data Simulation</span>
+      <span class="tech-pill">SQL</span>
+      <span class="tech-pill">Data Visualization</span>
     </div>
+
+    <div class="highlight-stat">
+      <div class="highlight-num">53.6%</div>
+      <div class="highlight-text">
+        <strong>Chocolate Boyoz</strong> identified as the market leader — contributing more than half of all tree plantings in the "Boyoz Forest" dataset.
+      </div>
+    </div>
+
+    <div class="metrics-box">
+      <div class="metrics-title">Technical Execution</div>
+      <ul class="metrics-list">
+        <li><strong>Engine:</strong> Realistic sales data simulated using Python and Pandas across multiple product variants and time periods.</li>
+        <li><strong>Transformation:</strong> SQL logic applied to convert raw sales figures into tree planting metrics based on the 9:1 ratio.</li>
+        <li><strong>Strategic Insight:</strong> Chocolate Boyoz identified as the dominant contributor — 53.6% of total environmental impact — informing production and marketing prioritization.</li>
+      </ul>
+    </div>
+
+    <a href="https://www.kaggle.com/code/ceylanbeln/sustainability-analysis-9-boyoz-1-tree" target="_blank" class="btn-primary">View Technical Workflow →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="index.html">Lab Home</a>
+  </div>
+</footer>
+
 </body>
 </html>
