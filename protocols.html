@@ -1,270 +1,644 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sovereign Protocols | Smyrna & Sable Technical Lab</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #0a0a0a;
-            --text-color: #e0e0e0;
-            --accent-color: #00ff41; /* Terminal Green */
-            --dim-text: #888;
-            --border-color: #333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sovereign Protocols — Smyrna & Sable Lab</title>
+  <meta name="description" content="The Sovereign Protocols — Waste Oracle's original framework. The conceptual architecture that became Sovereign Core.">
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        /* Background Grid Effect */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: linear-gradient(var(--border-color) 1px, transparent 1px),
-                              linear-gradient(90deg, var(--border-color) 1px, transparent 1px);
-            background-size: 50px 50px;
-            opacity: 0.05;
-            z-index: -1;
-        }
+  <style>
+    /* ── TOKENS (identical to index) ── */
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --green:    #1A6B3A;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        header {
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 40px;
-            margin-bottom: 60px;
-        }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        h1 {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 2.5rem;
-            letter-spacing: -1px;
-            margin: 0;
-            text-transform: uppercase;
-        }
+    a { color: inherit; text-decoration: none; }
 
-        .status-bar {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            margin-top: 10px;
-            text-transform: uppercase;
-        }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
 
-        .intro-text {
-            font-size: 1.2rem;
-            color: var(--dim-text);
-            margin-top: 20px;
-            max-width: 700px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
 
-        .protocol-section {
-            margin-bottom: 100px;
-        }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
 
-        .protocol-id {
-            font-family: 'Roboto Mono', monospace;
-            color: var(--accent-color);
-            font-weight: bold;
-            display: block;
-            margin-bottom: 10px;
-        }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); font-weight: 500; }
 
-        h2 {
-            font-size: 2rem;
-            margin: 0 0 20px 0;
-            letter-spacing: -0.5px;
-        }
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
 
-        .mission-statement {
-            font-style: italic;
-            color: #fff;
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 20px;
-        }
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
 
-        .content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 40px;
-        }
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 72px 48px 64px;
+      border-bottom: 1px solid var(--border);
+      max-width: 760px;
+    }
 
-        @media (max-width: 768px) {
-            .content-grid { grid-template-columns: 1fr; }
-        }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 32px;
+      transition: color 0.15s;
+    }
 
-        h3 {
-            font-size: 1rem;
-            text-transform: uppercase;
-            color: var(--accent-color);
-            margin-bottom: 15px;
-        }
+    .back-link:hover { color: var(--ink); }
 
-        p {
-            color: var(--dim-text);
-            font-size: 1rem;
-        }
+    .page-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
 
-        /* Terminal Simulation Style */
-        .terminal-window {
-            background-color: #000;
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            padding: 20px;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.9rem;
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            margin-top: 40px;
-            overflow: hidden;
-        }
+    .page-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
 
-        .terminal-header {
-            color: var(--dim-text);
-            border-bottom: 1px solid #222;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-        }
+    .page-title strong { font-weight: 600; }
 
-        .terminal-body {
-            color: #00ff41;
-            line-height: 1.4;
-        }
+    .page-intro {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.85;
+      max-width: 600px;
+    }
 
-        .cursor {
-            display: inline-block;
-            width: 8px;
-            height: 15px;
-            background-color: var(--accent-color);
-            animation: blink 1s infinite;
-            vertical-align: middle;
-        }
+    /* ── LAYOUT ── */
+    .content-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 48px;
+    }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
+    /* ── PROTOCOL BLOCK ── */
+    .protocol-block {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .footer-note {
-            margin-top: 80px;
-            padding: 30px;
-            border: 1px dashed var(--border-color);
-            background-color: rgba(255, 255, 255, 0.02);
-            text-align: center;
-        }
+    .protocol-block:last-of-type { border-bottom: none; }
 
-        .footer-note h4 {
-            font-family: 'Roboto Mono', monospace;
-            color: #ff4141; /* Warning Red */
-            margin-top: 0;
-        }
+    .protocol-id {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
 
-        .footer-note p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
+    .protocol-title {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
 
-        a.back-link {
-            display: inline-block;
-            margin-bottom: 40px;
-            color: var(--dim-text);
-            text-decoration: none;
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.8rem;
-        }
+    .protocol-quote {
+      font-size: 16px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-mid);
+      border-left: 2px solid var(--gold);
+      padding-left: 20px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
 
-        a.back-link:hover {
-            color: var(--accent-color);
-        }
-    </style>
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      margin-bottom: 40px;
+    }
+
+    .protocol-cell {
+      background: var(--bg);
+      padding: 32px;
+    }
+
+    .protocol-cell-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .protocol-cell-text {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    /* ── TERMINAL ── */
+    .terminal {
+      background: var(--ink);
+      overflow: hidden;
+    }
+
+    .terminal-bar {
+      background: #111;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    .terminal-bar-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .terminal-bar-status {
+      font-size: 10px;
+      color: var(--green);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .t-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #1A6B3A;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-size: 12px;
+      line-height: 1.8;
+      color: #ccc;
+    }
+
+    .t-line { display: block; }
+    .t-prompt { color: #555; }
+    .t-cmd    { color: #fff; }
+    .t-ok     { color: #1A6B3A; }
+    .t-alert  { color: #B8922A; }
+    .t-result { color: #FAF7F2; font-weight: 500; }
+
+    .t-cursor {
+      display: inline-block;
+      width: 6px; height: 13px;
+      background: #ccc;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── STATUS BOX ── */
+    .status-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: 28px 32px;
+      margin-top: 40px;
+    }
+
+    .status-box-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .status-rows { display: flex; flex-direction: column; gap: 10px; }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .status-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .status-row-key { color: var(--ink-mid); }
+
+    .status-val-ok  { font-weight: 500; color: var(--green); }
+    .status-val-na  { color: var(--ink-soft); }
+
+    /* ── CLASSIFIED NOTE ── */
+    .classified {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      margin-top: 72px;
+      margin-bottom: 72px;
+    }
+
+    .classified-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .classified-text {
+      font-size: 14px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    .classified-cta {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 11px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--ink-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .footer-sub {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+
+      .page-header { padding: 48px 24px; }
+      .content-wrap { padding: 0 24px; }
+
+      .protocol-grid { grid-template-columns: 1fr; }
+
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+        padding: 40px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="container">
-    <a href="index.html" class="back-link">< RETURN TO HUB</a>
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Lab Home</a>
+    <a href="index.html#articles">Articles</a>
+    <a href="protocols.html" class="active">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
 
-    <header>
-        <h1>The Sovereign Protocols</h1>
-        <div class="status-bar">SYSTEM STATUS: ENFORCING DIGITAL GOVERNANCE // LEVEL 04 CLEARENCE REQUIRED</div>
-        <p class="intro-text">
-            Standard marketing tools reach their limits. Our protocols redefine them. 
-            The Sovereign Protocols represent a strategic shift from passive data observation to active digital governance. 
-            Engineered within the Smyrna & Sable Technical Lab.
-        </p>
-    </header>
-
-    <section class="protocol-section">
-        <span class="protocol-id">[ PROTOCOL 01 ]</span>
-        <h2>WASTE ORACLE</h2>
-        <div class="mission-statement">
-            "Your budget is a weapon. Stop firing blanks."
-        </div>
-
-        <div class="content-grid">
-            <div class="grid-item">
-                <h3>The Problem</h3>
-                <p>
-                    Up to 30% of advertising capital is drained by non-human traffic, synthetic interactions, 
-                    and low-intent signals that standard ad-platforms fail to filter. Volume is often prioritized over efficiency.
-                </p>
-            </div>
-            <div class="grid-item">
-                <h3>The Solution</h3>
-                <p>
-                    Waste Oracle is a server-side defensive layer that validates the integrity of every inbound signal. 
-                    By processing behavioral entropy at the server level, it identifies discrepancies between genuine 
-                    human interest and algorithmic noise.
-                </p>
-            </div>
-        </div>
-
-        <div class="terminal-window">
-            <div class="terminal-header">
-                <span>TERMINAL V1.0 - WASTE_ORACLE_LOG</span>
-                <span>SECURE_CONN</span>
-            </div>
-            <div class="terminal-body">
-                > SYSTEM_STATUS: MONITORING INBOUND TRAFFIC...<br>
-                > DEPLOYING BEHAVIORAL ENTROPY ANALYZER... [OK]<br>
-                > ANALYZING CLICK_ID: 8829-QX_ANALYSIS_RUNNING...<br>
-                > ALERT: MICRO-MOVEMENT JITTER DETECTED.<br>
-                > SIGNAL CLASSIFIED AS: NON-HUMAN / BOT TRAFFIC.<br>
-                > ACTION: SUPPRESSING CONVERSION SIGNAL.<br>
-                > ACTION: DISPATCHING NULL-VALUE TO AD-ALGORITHM.<br>
-                > RESULT: €14.20 PRESERVED. ALGORITHM RE-ROUTED.<br>
-                > <span class="cursor"></span>
-            </div>
-        </div>
-    </section>
-
-    <div class="footer-note">
-        <h4>[ CLASSIFIED SPECIFICATIONS ]</h4>
-        <p>
-            To maintain the structural integrity of the Sovereign Protocols, technical schemas, Python logic, 
-            and SQL architecture are classified. Access to full documentation and server-side deployment modules 
-            is restricted to active strategic partners.
-        </p>
-    </div>
+<!-- PAGE HEADER -->
+<div class="page-header" style="margin: 0 auto; padding-left: 48px;">
+  <a href="index.html" class="back-link">← Back to Lab</a>
+  <span class="page-label">Protocol Documentation</span>
+  <h1 class="page-title">The <strong>Sovereign Protocols</strong></h1>
+  <p class="page-intro">
+    Standard marketing tools reach their limits. These protocols redefine them. A strategic shift from passive data observation to active digital governance — engineered within the Smyrna & Sable Lab.
+  </p>
 </div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- Protocol 01 -->
+  <div class="protocol-block">
+    <span class="protocol-id">Protocol 01</span>
+    <h2 class="protocol-title">Waste Oracle</h2>
+    <p class="protocol-quote">"Your budget is a weapon. Stop firing blanks."</p>
+
+    <div class="protocol-grid">
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Problem</span>
+        <p class="protocol-cell-text">Up to 30% of advertising capital is drained by non-human traffic, synthetic interactions, and low-intent signals that standard ad platforms fail to filter. Volume is prioritized over efficiency.</p>
+      </div>
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Solution</span>
+        <p class="protocol-cell-text">A server-side defensive layer that validates the integrity of every inbound signal. By processing behavioral entropy at the server level, it identifies discrepancies between genuine human interest and algorithmic noise.</p>
+      </div>
+    </div>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-bar-title">Waste Oracle — Signal Log</span>
+        <span class="terminal-bar-status"><span class="t-dot"></span> Secure connection</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-cmd">SYSTEM_STATUS: MONITORING INBOUND TRAFFIC</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-ok">BEHAVIORAL ENTROPY ANALYZER DEPLOYED [OK]</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-cmd">ANALYZING CLICK_ID: 8829-QX</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-alert">ALERT: MICRO-MOVEMENT JITTER DETECTED</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-cmd">SIGNAL CLASSIFIED: NON-HUMAN / BOT TRAFFIC</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-cmd">ACTION: SUPPRESSING CONVERSION SIGNAL</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-result">RESULT: €14.20 PRESERVED — ALGORITHM RE-ROUTED</span></span>
+        <span class="t-line"><span class="t-prompt">&gt; </span><span class="t-cursor"></span></span>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <span class="status-box-label">Current Status — sovereign.smyrnaandsable.com</span>
+      <div class="status-rows">
+        <div class="status-row">
+          <span class="status-row-key">Bot classification engine</span>
+          <span class="status-val-ok">Active</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Blacklist (GPTBot, ClaudeBot, scrapers)</span>
+          <span class="status-val-ok">Enforced</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Whitelist (Googlebot, Bingbot)</span>
+          <span class="status-val-ok">Passing</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Threats blocked (to date)</span>
+          <span class="status-val-ok">9</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Budget protected</span>
+          <span class="status-val-ok">€0.45</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protocol 02 -->
+  <div class="protocol-block">
+    <span class="protocol-id">Protocol 02</span>
+    <h2 class="protocol-title">ConsentlessOracle</h2>
+    <p class="protocol-quote">"When users decline consent, most platforms go blind. We don't."</p>
+
+    <div class="protocol-grid">
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Problem</span>
+        <p class="protocol-cell-text">GDPR compliance forces a binary choice: track with consent, or see nothing without it. Brands flying blind on 60–80% of their audience make budget decisions on incomplete data.</p>
+      </div>
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Solution</span>
+        <p class="protocol-cell-text">Identity-free behavioral signals. No IP, no cookie, no fingerprint. Users are grouped into cohorts — Explorer, Researcher, Bouncer — based on behavioral patterns alone. Budget recommendations follow from cohort distribution.</p>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <span class="status-box-label">ConsentlessOracle — Live Metrics</span>
+      <div class="status-rows">
+        <div class="status-row">
+          <span class="status-row-key">GDPR compliance method</span>
+          <span class="status-val-ok">Zero identity</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Sovereign — consent accepted</span>
+          <span class="status-val-ok">9</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Shop — consent declined</span>
+          <span class="status-val-ok">40</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Active cohorts</span>
+          <span class="status-val-ok">Explorer / Researcher / Bouncer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protocol 03 -->
+  <div class="protocol-block">
+    <span class="protocol-id">Protocol 03</span>
+    <h2 class="protocol-title">Carbon Tracker</h2>
+    <p class="protocol-quote">"Every blocked bot is a small act of environmental responsibility."</p>
+
+    <div class="protocol-grid">
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Method</span>
+        <p class="protocol-cell-text">Each blocked bot request saves approximately 0.8g of CO₂ — derived from Green Web Foundation and HTTP Archive 2024 methodology. Fully aligned with CSRD reporting requirements.</p>
+      </div>
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Output</span>
+        <p class="protocol-cell-text">Green Score 0–100. Real-time CO₂ savings in grams, energy saved in kWh, and human-readable equivalents. The only marketing intelligence layer that connects ad spend efficiency to carbon footprint.</p>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <span class="status-box-label">Carbon Tracker — Live Metrics</span>
+      <div class="status-rows">
+        <div class="status-row">
+          <span class="status-row-key">CO₂ saved to date</span>
+          <span class="status-val-ok">7.2g</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Methodology</span>
+          <span class="status-val-ok">CSRD compliant</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Data source</span>
+          <span class="status-val-ok">Green Web Foundation + HTTP Archive 2024</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protocol 04 -->
+  <div class="protocol-block">
+    <span class="protocol-id">Protocol 04</span>
+    <h2 class="protocol-title">Ghost Profiling</h2>
+    <p class="protocol-quote">"The most dangerous traffic is the traffic you cannot see."</p>
+
+    <div class="protocol-grid">
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Method</span>
+        <p class="protocol-cell-text">Behavioral entropy analysis at session level. Mouse movement patterns, timing anomalies, and interaction signatures are scored to distinguish human visitors from sophisticated bots that pass basic filters.</p>
+      </div>
+      <div class="protocol-cell">
+        <span class="protocol-cell-label">The Output</span>
+        <p class="protocol-cell-text">Risk score 0–100 per session. Session Intelligence Layer with engagement scoring, behavioral intent classification, and cohort assignment. All GDPR-compliant via one-way session hashing.</p>
+      </div>
+    </div>
+
+    <div class="status-box">
+      <span class="status-box-label">Ghost Profiler — Live Metrics</span>
+      <div class="status-rows">
+        <div class="status-row">
+          <span class="status-row-key">Sessions analyzed</span>
+          <span class="status-val-ok">620+</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Identity method</span>
+          <span class="status-val-ok">One-way session hash</span>
+        </div>
+        <div class="status-row">
+          <span class="status-row-key">Risk scoring</span>
+          <span class="status-val-ok">0–100, per session</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classified note -->
+  <div class="classified">
+    <span class="classified-label">Access Note</span>
+    <p class="classified-text">
+      Technical schemas, Python source, and API documentation are available via the live platform. Full server-side deployment modules are accessible to active partners and through the Sovereign Pro API.
+    </p>
+    <div class="classified-cta">
+      <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="btn-primary">View Sovereign Core →</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="index.html">Lab Home</a>
+  </div>
+</footer>
 
 </body>
 </html>
