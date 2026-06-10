@@ -1,244 +1,982 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smyrna & Sable | Evolving Data Lab</title>
-    
-    <style>
-        :root {
-            --navy-deep: #020c1b;
-            --navy-light: #0a192f;
-            --gold-bright: #FFD700;
-            --slate: #a8b2d1;
-            --white: #e6f1ff;
-            --protocol-green: #00ff41;
-        }
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MGTFH25T');</script>
 
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            background: var(--navy-deep);
-            background-image: linear-gradient(rgba(2, 12, 27, 0.8), rgba(2, 12, 27, 0.8)), url('dark-metal-texture.jpg');
-            background-size: cover;
-            background-attachment: fixed;
-            color: var(--white);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smyrna & Sable — Lab</title>
+  <meta name="description" content="The technical laboratory where Sovereign Core was built. MarTech strategy, data intelligence, and digital governance by Ceylan Belin.">
 
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 50px; background: rgba(2, 12, 27, 0.9); backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            position: sticky; top: 0; z-index: 100;
-        }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-        .logo { 
-            color: var(--gold-bright); font-weight: bold; text-decoration: none; 
-            letter-spacing: 2px; font-size: 20px; text-transform: uppercase;
-        }
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --gold-lt:  #D4A83A;
+      --green:    #1A6B3A;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
 
-        .nav-links { display: flex; align-items: center; }
-        .nav-links a { 
-            color: var(--slate); text-decoration: none; margin-left: 30px; 
-            font-size: 12px; text-transform: uppercase; transition: 0.3s; 
-            letter-spacing: 1px;
-        }
-        .nav-links a:hover { color: var(--gold-bright); }
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .protocol-link {
-            color: var(--protocol-green) !important;
-            font-family: 'Roboto Mono', monospace;
-            border-bottom: 1px solid transparent;
-        }
-        .protocol-link:hover {
-            border-bottom: 1px solid var(--protocol-green);
-            text-shadow: 0 0 8px rgba(0, 255, 65, 0.5);
-        }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .container { 
-            display: flex; flex-direction: column; align-items: center; 
-            padding: 80px 20px; text-align: center; 
-        }
+    a { color: inherit; text-decoration: none; }
 
-        h1 { 
-            color: var(--gold-bright); font-size: 64px; margin-bottom: 5px; 
-            font-family: 'Georgia', serif; font-style: italic; 
-        }
-        .subtitle { 
-            color: var(--slate); font-size: 14px; margin-bottom: 50px; 
-            letter-spacing: 4px; text-transform: uppercase; 
-        }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
 
-        .grid { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 30px; width: 100%; max-width: 1100px; 
-        }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
 
-        .card {
-            background: rgba(17, 34, 64, 0.5); padding: 35px; border-radius: 4px; 
-            border: 1px solid rgba(212, 175, 55, 0.1); transition: 0.4s; 
-            text-align: left; cursor: pointer;
-        }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
 
-        .card:hover {
-            border-color: var(--gold-bright); transform: translateY(-5px);
-            background: rgba(17, 34, 64, 0.8);
-        }
+    .nav-links a:hover { color: var(--ink); }
 
-        .card h3 { color: var(--gold-bright); margin-top: 0; font-size: 20px; }
-        .card p { color: var(--slate); font-size: 14px; line-height: 1.6; }
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
 
-        .status-panel {
-            background: rgba(10, 25, 47, 0.9); padding: 30px; border-radius: 4px; 
-            width: 100%; max-width: 700px; text-align: left; margin-top: 60px;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-        }
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
 
-        .sovereign-cta {
-            background: linear-gradient(to bottom, transparent, #020c1b);
-            padding: 120px 20px; text-align: center;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-        }
-        .sovereign-cta h2 {
-            font-family: 'Roboto Mono', monospace; color: var(--protocol-green);
-            font-size: 24px; letter-spacing: 4px; text-transform: uppercase;
-        }
-        .sovereign-cta p {
-            color: var(--slate); max-width: 600px; margin: 20px auto; font-size: 14px;
-        }
-        .lab-btn {
-            display: inline-block; padding: 15px 35px; border: 1px solid var(--protocol-green);
-            color: var(--protocol-green); text-decoration: none; font-family: 'Roboto Mono', monospace;
-            font-size: 13px; font-weight: bold; transition: 0.3s; margin-top: 20px;
-        }
-        .lab-btn:hover { background: var(--protocol-green); color: var(--navy-deep); box-shadow: 0 0 20px rgba(0, 255, 65, 0.3); }
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      padding: 80px 48px 96px;
+      border-bottom: 1px solid var(--border);
+    }
 
-        .oracle-trigger-btn {
-            background: transparent; border: 1px dashed var(--protocol-green); 
-            color: var(--protocol-green); padding: 6px 12px; font-family: 'Roboto Mono', monospace; 
-            font-size: 10px; cursor: pointer; transition: 0.3s; border-radius: 3px;
-        }
-        .oracle-trigger-btn:hover {
-            background: rgba(0, 255, 65, 0.1); box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
-        }
+    .hero-left {}
 
-        footer {
-            background: #010812; color: #444; padding: 40px 20px; text-align: center;
-            font-family: 'Roboto Mono', monospace; font-size: 10px; border-top: 1px solid #111;
-        }
-    </style>
+    .hero-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 300;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .hero-title strong {
+      font-weight: 600;
+    }
+
+    .hero-body {
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 36px;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 11px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--ink-mid); }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 11px 24px;
+      border: 1px solid var(--border);
+      color: var(--ink-mid);
+      font-size: 12px;
+      font-weight: 400;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
+
+    /* ── LOG PANEL (hero right) ── */
+    .hero-right {}
+
+    .log-panel {
+      border: 1px solid var(--border);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .log-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      background: var(--bg-2);
+    }
+
+    .log-header-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-mid);
+    }
+
+    .log-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      color: var(--green);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+
+    .log-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    .log-body {
+      padding: 0;
+    }
+
+    .log-row {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 12px;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .log-row:last-child { border-bottom: none; }
+    .log-row.visible { opacity: 1; }
+
+    .log-row-date { color: var(--ink-soft); font-size: 11px; }
+    .log-row-source { color: var(--ink-mid); }
+
+    .log-score {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      letter-spacing: 0.06em;
+    }
+
+    .log-score.ok  { background: #EAF5EE; color: var(--green); }
+    .log-score.mid { background: #FBF3E0; color: #8A6200; }
+
+    .log-footer {
+      padding: 12px 20px;
+      background: var(--bg-2);
+      font-size: 11px;
+      color: var(--ink-soft);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .log-cursor {
+      display: inline-block;
+      width: 6px; height: 12px;
+      background: var(--ink-soft);
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 48px;
+      line-height: 1.2;
+    }
+
+    .section-title strong { font-weight: 600; }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+    }
+
+    .about-stat-block {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .stat-divider {
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      margin: 4px 0 0;
+    }
+
+    .about-text {
+      color: var(--ink-mid);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .about-text p + p { margin-top: 16px; }
+
+    /* ── ARTICLES ── */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .article-card {
+      background: var(--bg);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      min-height: 280px;
+      transition: background 0.15s;
+    }
+
+    .article-card:hover { background: var(--white); }
+
+    .article-card.soon { opacity: 0.6; }
+    .article-card.soon:hover { background: var(--bg); }
+
+    .article-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    .article-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .article-excerpt {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      flex-grow: 1;
+    }
+
+    .article-footer {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .article-date {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .article-status {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 36px 32px;
+      transition: background 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-card:hover { background: var(--white); }
+
+    .project-num {
+      font-size: 11px;
+      color: var(--ink-soft);
+      letter-spacing: 0.1em;
+    }
+
+    .project-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      margin-top: 8px;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--bg-2);
+      padding: 3px 8px;
+      background: var(--bg-2);
+    }
+
+    /* ── SOVEREIGN BRIDGE ── */
+    .sovereign-section {
+      background: var(--ink);
+      padding: 80px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sovereign-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .sovereign-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sovereign-title {
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .sovereign-title strong { font-weight: 600; }
+
+    .sovereign-body {
+      font-size: 14px;
+      color: rgba(250,247,242,0.6);
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    .sovereign-body strong { color: var(--bg); font-weight: 500; }
+
+    .btn-sovereign {
+      display: inline-block;
+      padding: 11px 24px;
+      border: 1px solid rgba(250,247,242,0.3);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: all 0.15s;
+    }
+
+    .btn-sovereign:hover {
+      background: rgba(250,247,242,0.08);
+      border-color: rgba(250,247,242,0.6);
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 16px;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      align-items: start;
+    }
+
+    .feature-row:first-child { border-top: 1px solid rgba(255,255,255,0.06); }
+
+    .feature-num {
+      font-size: 11px;
+      color: rgba(250,247,242,0.3);
+      padding-top: 2px;
+      font-weight: 500;
+    }
+
+    .feature-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--bg);
+      margin-bottom: 4px;
+    }
+
+    .feature-desc {
+      font-size: 12px;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.6;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .footer-sub {
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-size: 12px;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── CONSENT ── */
+    #consent-banner {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      max-width: 400px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 24px;
+      z-index: 9999;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    }
+
+    .consent-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+
+    .consent-text {
+      font-size: 12px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .consent-buttons {
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .consent-decline {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--ink-soft);
+      padding: 8px 18px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.15s;
+    }
+
+    .consent-decline:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+    .consent-accept {
+      background: var(--ink);
+      border: 1px solid var(--ink);
+      color: var(--bg);
+      padding: 8px 18px;
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.15s;
+    }
+
+    .consent-accept:hover { background: var(--ink-mid); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 60px 24px 72px;
+        gap: 48px;
+      }
+
+      .section { padding: 60px 24px; }
+
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .about-stat-block { flex-direction: row; flex-wrap: wrap; gap: 24px; }
+
+      .articles-grid { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .sovereign-section { padding: 60px 24px; }
+      .sovereign-inner { grid-template-columns: 1fr; gap: 48px; }
+
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+        padding: 40px 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 <body>
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <nav>
-        <a href="index.html" class="logo">SMYRNA & SABLE</a>
-        <div class="nav-links">
-            <a href="kaggle.html">Kaggle</a>
-            <a href="#">SQL</a>
-            <a href="data-strategy.html">Strategy</a>
-            <a href="protocols.html" class="protocol-link">Protocols</a>
-        </div>
-    </nav>
 
-    <div class="container">
-        <h1>Smyrna & Sable</h1>
-        <div class="subtitle">Evolving Data Lab is ACTIVE</div>
-        
-        <div class="grid">
-            <div class="card" onclick="window.location.href='kaggle.html'">
-                <h3>Kaggle Projects</h3>
-                <p>9 Boyoz = 1 Tree and advanced environmental data simulations. Bridging data and storytelling.</p>
-            </div>
-            
-            <div class="card" onclick="window.location.href='data-strategy.html'">
-                <h3>Data Strategy</h3>
-                <p>Strategic B2B market entry frameworks and ROI optimization through data intelligence.</p>
-            </div>
-            
-            <div class="card">
-                <h3>Technical Lab</h3>
-                <p>Verification sandbox for Consent Mode V2 and GTM Server-Side infrastructure monitoring.</p>
-            </div>
-        </div>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-        <div class="status-panel">
-            <div class="status-header" style="color: var(--gold-bright); font-size: 12px; text-transform: uppercase; margin-bottom: 10px; font-weight: bold;">Infrastructure Monitoring</div>
-            <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center;">
-                <span>GTM Container:</span>
-                <span style="color: #238636; font-weight: bold;">GTM-MGTFH25T ACTIVE</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); align-items: center;">
-                <span>EEA Consent Signals:</span>
-                <span id="consent-status-pill" style="color: #da3633; font-weight: bold;">ACTION REQUIRED</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; padding: 10px 0; font-size: 12px; align-items: center;">
-                <span>Waste Oracle Sandbox:</span>
-                <button class="oracle-trigger-btn" onclick="sendSignal()">[ RUN ORACLE PIPELINE ]</button>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="#articles">Articles</a>
+    <a href="protocols.html">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-label">Smyrna & Sable — Evolving Data Lab</div>
+    <h1 class="hero-title">
+      Where strategy<br>
+      <strong>meets infrastructure.</strong>
+    </h1>
+    <p class="hero-body">
+      The technical laboratory of Ceylan Belin — MarTech Strategist building from İzmir, thinking in Copenhagen and Brussels. Sovereign Core was born here.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#articles" class="btn-primary">Read the Lab</a>
+      <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="btn-secondary">Sovereign Core →</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="log-panel">
+      <div class="log-header">
+        <span class="log-header-title">Waste Oracle — Audit Log</span>
+        <span class="log-live"><span class="log-dot"></span> Live</span>
+      </div>
+      <div class="log-body" id="log-body"></div>
+      <div class="log-footer"><span class="log-cursor"></span> &nbsp;Monitoring active</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section">
+  <span class="section-label">About</span>
+  <div class="about-grid">
+    <div class="about-stat-block">
+      <div class="stat-item">
+        <div class="stat-num">5</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Phases completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">1800+</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Signals analyzed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-divider"></div>
+        <div class="stat-label">Live domains</div>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>This is the Lab — where every experiment starts. From early data notebooks on sustainability, to the behavioral entropy models that became Sovereign Core. It is a record of how ideas become infrastructure.</p>
+      <p>Built entirely from mobile. No desktop, no agency budget. What you see here is a real stack: server-side infrastructure running 24/7 on Render Frankfurt, GTM containers across four live domains, and a GDPR-compliant intelligence layer written from scratch.</p>
+      <p>Target: a single European organization in Denmark or Benelux that takes data governance seriously. Sovereign Core comes with me — from day one.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section class="section" id="articles">
+  <span class="section-label">Articles</span>
+  <h2 class="section-title"><strong>Lab Writing</strong></h2>
+  <div class="articles-grid">
+
+    <div class="article-card soon">
+      <div class="article-tag">Origin Story</div>
+      <div class="article-title">Built on a phone, zero budget</div>
+      <div class="article-excerpt">How Sovereign Core went from a GTM container experiment to a live server-side intelligence platform — built entirely from a mobile screen, with no funding and no safety net.</div>
+      <div class="article-footer">
+        <span class="article-date">Coming soon</span>
+        <span class="article-status">Drafting</span>
+      </div>
     </div>
 
-    <section class="sovereign-cta">
-        <h2>The Sovereign Protocols</h2>
-        <p>Beyond standard analytics. Engineered within the Smyrna & Sable Technical Lab to transcend digital marketing limitations and enforce data governance.</p>
-        <a href="protocols.html" class="lab-btn">[ ENTER THE LABORATORY ]</a>
-    </section>
-
-    <footer>
-        <p>© 2026 SMYRNA & SABLE TECHNICAL LAB // SYSTEM_STATUS: OPERATIONAL</p>
-    </footer>
-
-    <div id="cookie-banner" style="position: fixed; bottom: 20px; left: 20px; right: 20px; background: rgba(10, 25, 47, 0.98); border: 1px solid var(--gold-bright); padding: 25px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; border-radius: 4px; box-shadow: 0 10px 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px); max-width: 600px;">
-        <div style="color: var(--gold-bright); font-weight: bold; font-size: 14px; letter-spacing: 1px;">🛡️ CONSENT MANAGEMENT SYSTEM</div>
-        <p style="color: var(--slate); font-size: 12px; margin: 0; line-height: 1.6;">
-            We support <strong>GDPR & Consent Mode V2</strong> compliance.
-        </p>
-        <div style="display: flex; gap: 10px; justify-content: flex-end;">
-            <button onclick="updateConsent(false)" style="background: transparent; border: 1px solid var(--slate); color: var(--slate); padding: 8px 15px; cursor: pointer; font-size: 10px; font-weight: bold;">REJECT</button>
-            <button onclick="updateConsent(true)" style="background: var(--gold-bright); border: 1px solid var(--gold-bright); color: var(--navy-deep); padding: 8px 15px; cursor: pointer; font-size: 10px; font-weight: bold;">ACCEPT ALL</button>
-        </div>
+    <div class="article-card soon">
+      <div class="article-tag">Compliance</div>
+      <div class="article-title">The cookieless era: what Benelux brands must do now</div>
+      <div class="article-excerpt">Consent Mode V2 changed the rules. First-party data strategies that work for privacy-first European markets — without sacrificing campaign measurement.</div>
+      <div class="article-footer">
+        <span class="article-date">Coming soon</span>
+        <span class="article-status">Planned</span>
+      </div>
     </div>
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('consent', 'default', {'ad_storage': 'denied', 'analytics_storage': 'denied', 'ad_user_data': 'denied', 'ad_personalization': 'denied', 'wait_for_update': 500});
+    <div class="article-card soon">
+      <div class="article-tag">GDPR</div>
+      <div class="article-title">Why bot traffic is killing your GDPR compliance</div>
+      <div class="article-excerpt">Non-human signals corrupt your consent records, pollute your attribution, and create legal exposure. The data from our own server logs.</div>
+      <div class="article-footer">
+        <span class="article-date">Coming soon</span>
+        <span class="article-status">Planned</span>
+      </div>
+    </div>
 
-        function updateConsent(isAccepted) {
-            const status = isAccepted ? 'granted' : 'denied';
-            gtag('consent', 'update', {'ad_storage': status, 'analytics_storage': status, 'ad_user_data': status, 'ad_personalization': status});
-            document.getElementById('cookie-banner').style.display = 'none';
-            if(isAccepted) {
-                document.getElementById('consent-status-pill').innerText = 'SIGNALS: GRANTED';
-                document.getElementById('consent-status-pill').style.color = '#238636';
-            }
-        }
+  </div>
+</section>
 
-        // KORUMALI VERCEL KÖPRÜSÜNÜ TETİKLEYEN OTONOM FONKSİYON
-        async function sendSignal() {
-            alert("🚀 Activating Waste Oracle Pipeline via Secure Vercel Serverless Gateway...");
+<!-- PROJECTS -->
+<section class="section">
+  <span class="section-label">Projects</span>
+  <h2 class="section-title"><strong>Lab Work</strong></h2>
+  <div class="projects-grid">
 
-            try {
-                // İstek artık doğrudan GitHub'a değil, Vercel'deki o küçük harfli sunucusuz fonksiyona gidiyor
-                const response = await fetch('/api/trigger', {
-                    method: "POST"
-                });
+    <a href="data-strategy.html" class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-name">B2B ROI Strategy</div>
+      <div class="project-desc">Belgian market entry framework. SQL-scored lead prioritization across 200+ B2B prospects with investment capacity modeling.</div>
+      <div class="project-tags">
+        <span class="tag">Strategy</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Data Viz</span>
+      </div>
+    </a>
 
-                if (response.ok) {
-                    alert("✓ Success: Sovereign Signal dispatched securely. GitHub Actions Engine is now RUNNING!");
-                } else {
-                    alert("⚠️ Gateway Error: Authorization handshake failed. Check your token in Vercel Vault.");
-                }
-            } catch (error) {
-                console.error("⚠️ Network Infrastructure Error:", error);
-                alert("⚠️ Connection Failed: Network proxy error.");
-            }
-        }
-    </script>
+    <a href="kaggle.html" class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-name">9 Boyoz = 1 Tree</div>
+      <div class="project-desc">A Python and SQL pipeline connecting İzmir pastry sales to reforestation metrics. Sustainability data storytelling on Kaggle.</div>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Kaggle</span>
+      </div>
+    </a>
+
+    <a href="protocols.html" class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-name">The Sovereign Protocols</div>
+      <div class="project-desc">Waste Oracle's original documentation — the conceptual framework that grew into Sovereign Core's server-side architecture.</div>
+      <div class="project-tags">
+        <span class="tag">MarTech</span>
+        <span class="tag">Architecture</span>
+        <span class="tag">GDPR</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- SOVEREIGN BRIDGE -->
+<section class="sovereign-section">
+  <div class="sovereign-inner">
+    <div>
+      <span class="sovereign-label">Born in this lab</span>
+      <h2 class="sovereign-title"><strong>Sovereign Core</strong></h2>
+      <p class="sovereign-body">
+        Europe's first server-side marketing intelligence platform. It protects your advertising budget, keeps your data in your own hands, and measures the carbon footprint of your digital operations.
+      </p>
+      <p class="sovereign-body" style="margin-top: -8px;">
+        <strong>Every line of code started here.</strong> The Waste Oracle experiments in this Lab became the detection engine. The consent signals became ConsentlessOracle. The weekly audit logs became Carbon Tracker.
+      </p>
+      <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="btn-sovereign">Enter Sovereign Core →</a>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature-row">
+        <div class="feature-num">01</div>
+        <div>
+          <div class="feature-name">Bot Classification</div>
+          <div class="feature-desc">Whitelist and blacklist engine. Googlebot passes. GPTBot, ClaudeBot, scrapers — blocked at server level.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">02</div>
+        <div>
+          <div class="feature-name">ConsentlessOracle</div>
+          <div class="feature-desc">GDPR-compliant behavioral intelligence with zero identity. Three cohorts, budget recommendations. No cookies, no IPs.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">03</div>
+        <div>
+          <div class="feature-name">Carbon Tracker</div>
+          <div class="feature-desc">Every blocked bot saves 0.8g CO₂. CSRD-compliant methodology. Green Score 0–100.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">04</div>
+        <div>
+          <div class="feature-name">Ghost Profiling</div>
+          <div class="feature-desc">Behavioral entropy analysis with Session Intelligence Layer. Engagement scoring and cohort assignment.</div>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">05</div>
+        <div>
+          <div class="feature-name">Sovereign Pro API</div>
+          <div class="feature-desc">Bearer-token authenticated API. Pydantic models and /api/v1/analyze endpoint for enterprise integration.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="protocols.html">Protocols</a>
+  </div>
+</footer>
+
+<!-- CONSENT BANNER -->
+<div id="consent-banner">
+  <div class="consent-title">Privacy & Cookies</div>
+  <div class="consent-text">This Lab uses GDPR Consent Mode V2. Analytics are only activated with your permission.</div>
+  <div class="consent-buttons">
+    <button class="consent-decline" onclick="updateConsent(false)">Decline</button>
+    <button class="consent-accept" onclick="updateConsent(true)">Accept</button>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+  // Consent Mode V2
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    analytics_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+
+  function updateConsent(accepted) {
+    const s = accepted ? 'granted' : 'denied';
+    gtag('consent', 'update', {
+      ad_storage: s, analytics_storage: s,
+      ad_user_data: s, ad_personalization: s
+    });
+    document.getElementById('consent-banner').style.display = 'none';
+    dataLayer.push({ event: accepted ? 'consent_accepted' : 'consent_decline' });
+    document.cookie = "consent_status=" + (accepted ? "granted" : "denied") + "; path=/; max-age=31536000";
+  }
+
+  window.onload = function() {
+    if (document.cookie.indexOf('consent_status=') !== -1) {
+      document.getElementById('consent-banner').style.display = 'none';
+    }
+  };
+
+  // Audit log rows
+  const logs = [
+    { date: "2026-06-09", source: "Automated Weekly Audit", score: 99 },
+    { date: "2026-06-02", source: "Automated Weekly Audit", score: 99 },
+    { date: "2026-05-29", source: "Manual Audit",           score: 100 },
+    { date: "2026-05-26", source: "Automated Weekly Audit", score: 100 },
+  ];
+
+  function renderLogs() {
+    const body = document.getElementById('log-body');
+    logs.forEach((log, i) => {
+      const row = document.createElement('div');
+      row.className = 'log-row';
+      const scoreClass = log.score === 100 ? 'ok' : 'mid';
+      row.innerHTML = `
+        <span class="log-row-date">${log.date}</span>
+        <span class="log-row-source">${log.source}</span>
+        <span class="log-score ${scoreClass}">${log.score}%</span>
+      `;
+      body.appendChild(row);
+      setTimeout(() => row.classList.add('visible'), 150 + i * 120);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderLogs);
+</script>
+
 </body>
 </html>
