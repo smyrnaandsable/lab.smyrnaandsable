@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why I Built a Brand Before a CV — Smyrna & Sable Lab</title>
+  <meta name="description" content="How a MarTech strategist from İzmir built a gastronomic brand concept to bridge two cultures — and why it became a live data laboratory.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --green:    #1A6B3A;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
+
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .article-header {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .article-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .article-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .meta-author {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .meta-date {
+      font-size: 12px;
+      color: var(--ink-soft);
+    }
+
+    .meta-divider {
+      width: 1px;
+      height: 14px;
+      background: var(--border);
+    }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 48px 96px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .article-body p:last-child { margin-bottom: 0; }
+
+    .article-body strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 4px 0 4px 24px;
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-size: 18px !important;
+      font-weight: 300;
+      color: var(--ink) !important;
+      line-height: 1.6 !important;
+      font-style: italic;
+      margin-bottom: 0 !important;
+    }
+
+    /* Section break */
+    .section-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0;
+    }
+
+    .section-break-line {
+      flex-grow: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-break-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+    }
+
+    /* Product bridge visual */
+    .bridge-visual {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 32px;
+      margin: 40px 0;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .bridge-side {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bridge-side-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 4px;
+    }
+
+    .bridge-item {
+      font-size: 13px;
+      color: var(--ink-mid);
+      padding: 8px 12px;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      line-height: 1.4;
+    }
+
+    .bridge-arrow {
+      font-size: 22px;
+      color: var(--gold);
+      text-align: center;
+      font-weight: 300;
+    }
+
+    /* Closing CTA */
+    .article-cta {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      margin-top: 56px;
+    }
+
+    .article-cta-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .article-cta p {
+      font-size: 14px !important;
+      color: var(--ink-mid) !important;
+      margin-bottom: 16px !important;
+      line-height: 1.75 !important;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 11px 24px;
+      background: var(--ink);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--ink-mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .footer-sub { font-size: 11px; color: var(--ink-soft); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-soft); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .article-header { padding: 48px 24px 40px; }
+      .article-body { padding: 40px 24px 72px; }
+      .bridge-visual { grid-template-columns: 1fr; }
+      .bridge-arrow { transform: rotate(90deg); }
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Lab Home</a>
+    <a href="index.html#articles">Articles</a>
+    <a href="protocols.html">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <a href="index.html#articles" class="back-link">← Back to Articles</a>
+  <span class="article-tag">Origin Story</span>
+  <h1 class="article-title">Why I Built a Brand Before a CV</h1>
+  <p class="article-subtitle">How a gastronomic concept became a data laboratory — and why the bridge between İzmir and Belgium is more than a marketing exercise.</p>
+  <div class="article-meta">
+    <span class="meta-author">Ceylan Belin</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">June 2026</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">MarTech · Strategy · Origin</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p>
+    Most professionals build a CV. They list their roles, their companies, their achievements in bullet points. I took a different route. I built a brand — a fictional gastronomic concept that bridges two cultures — and used it as both a strategic case study and a live data laboratory. That brand is <strong>Smyrna & Sable</strong>.
+  </p>
+
+  <p>
+    The question I kept asking myself was this: how many marketing professionals can demonstrate their thinking not through a presentation, but through a working ecosystem? Not slides, but actual server infrastructure. Not claimed expertise, but measurable output.
+  </p>
+
+  <div class="pull-quote">
+    <p>"Instead of presenting my ideas through multiple presentations, I thought it would be much better to gather them at a single point — through a brand and a website."</p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Name</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <p>
+    I live in İzmir, Turkey. My husband and I share a deep love for Belgium — it is our goal to build our next life there. So when it came time to name this project, the answer was already in front of me.
+  </p>
+
+  <p>
+    <strong>Smyrna</strong> is the ancient name of İzmir. <strong>Sable</strong> refers to the sandy-textured biscuits I first tasted in Belgium — delicate, precise, deeply European. Two words. Two cities. One brand that exists exactly at the intersection.
+  </p>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Concept</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <p>
+    Once the name was settled, the product logic followed naturally. İzmir has <strong>Boyoz</strong> — a protected pastry, a city icon, something that belongs to no other place on earth. Belgium has Speculoos, pralines, Herve cheese, Andalouse sauce. What happens when you put them together?
+  </p>
+
+  <div class="bridge-visual">
+    <div class="bridge-side">
+      <div class="bridge-side-label">İzmir</div>
+      <div class="bridge-item">Boyoz — İzmir's protected pastry</div>
+      <div class="bridge-item">Ödemiş potato — Aegean origin</div>
+      <div class="bridge-item">Artichoke — Aegean harvest</div>
+    </div>
+    <div class="bridge-arrow">×</div>
+    <div class="bridge-side">
+      <div class="bridge-side-label">Belgium</div>
+      <div class="bridge-item">Speculoos / Biscoff cream</div>
+      <div class="bridge-item">Herve cheese — UNESCO heritage</div>
+      <div class="bridge-item">Andalouse sauce — tartlet base</div>
+    </div>
+  </div>
+
+  <p>
+    Six product concepts emerged from this logic. Each one grounded in real ingredients, real cultural references, real market knowledge. When a Belgian consumer encounters these products, they find something from their own home — reframed through an Aegean lens.
+  </p>
+
+  <p style="margin: 8px 0 36px;">
+    <a href="https://www.smyrnaandsable.com/en/our-collection" target="_blank" class="btn-primary">Explore the Full Collection →</a>
+  </p>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Method</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <p>
+    My background is not purely digital. I spent years in B2B sales and corporate marketing — trade fairs, playground manufacturing, municipality tenders, lead generation in field operations. I know what it means to stand in front of a buyer and defend a value proposition. I also know what it means to prepare technical specifications to TS EN standards.
+  </p>
+
+  <p>
+    But the world shifted. Digital transformation made traditional methods insufficient on their own. So I learned data analysis, GA4, Google Ads, GTM — and then I asked myself: what would a marketing expert who knows both worlds do with a brand they fully control?
+  </p>
+
+  <p>
+    They would build a real ecosystem around it. A <strong>multilingual website</strong> in English, French, and Dutch — reflecting Belgium's own linguistic structure. A <strong>fictional trade fair campaign</strong> inspired by Tavola and Salon du Chocolat. Sponsorship frameworks, franchising concepts, branded promotional gifts. And underneath all of it, a <strong>live data infrastructure</strong> that tracks every signal, every consent decision, every bot that tries to corrupt the measurement.
+  </p>
+
+  <p>
+    That infrastructure became <strong>Sovereign Core</strong> — a server-side marketing intelligence platform now running 24/7 on Render Frankfurt, processing real traffic, blocking real threats, and generating real carbon savings data. It started here, in this Lab, as a Waste Oracle experiment. It grew into something much larger.
+  </p>
+
+  <div class="pull-quote">
+    <p>"How many marketing professionals can demonstrate their thinking not through a presentation, but through a working ecosystem?"</p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Goal</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <p>
+    Smyrna & Sable is a case study. The products are concepts, not physical goods. The trade fair was fictional. But everything built around the brand is real — the code, the data, the infrastructure, the strategic frameworks.
+  </p>
+
+  <p>
+    I am looking for a single European organization — in Denmark or Benelux — where I can bring this thinking to real problems. Not just the MarTech expertise, not just the data strategy. The whole ecosystem. <strong>When you hire me, Sovereign Core comes with me. From day one.</strong>
+  </p>
+
+  <div class="article-cta">
+    <span class="article-cta-label">What's next</span>
+    <p>Sovereign Core is live. The Lab is active. If you are building something in Denmark or Belgium and data governance matters to you — I would like to talk.</p>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="btn-primary">See Sovereign Core →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="index.html">Lab Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
