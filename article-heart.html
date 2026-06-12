@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Heart of Smyrna & Sable — Ceylan Belin</title>
+  <meta name="description" content="Every brand has a story. Mine begins not with a strategy, but with a woman who fought with everything she had.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --green:    #1A6B3A;
+      --rose:     #C97A8A;
+      --rose-soft:#F0D8DE;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
+
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .article-header {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .article-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .article-title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .article-subtitle {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .meta-author { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .meta-date   { font-size: 12px; color: var(--ink-soft); }
+    .meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 48px 96px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { color: var(--ink); font-weight: 600; }
+
+    /* Lead */
+    .lead {
+      font-size: 18px !important;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-mid) !important;
+      border-left: 2px solid var(--gold);
+      padding-left: 24px;
+      margin-bottom: 48px !important;
+      line-height: 1.75 !important;
+    }
+
+    /* Section break */
+    .section-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 48px 0;
+    }
+
+    .section-break-line { flex-grow: 1; height: 1px; background: var(--border); }
+
+    .section-break-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      flex-shrink: 0;
+    }
+
+    /* Section title */
+    .section-title {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .block-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 24px;
+      line-height: 1.25;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      background: var(--bg-2);
+      border-left: 3px solid var(--rose);
+      padding: 24px 28px;
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-size: 17px !important;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink) !important;
+      line-height: 1.6 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Pink Hope block */
+    .pink-hope {
+      background: linear-gradient(135deg, var(--rose-soft) 0%, var(--bg-2) 100%);
+      border: 1px solid rgba(201,122,138,0.25);
+      padding: 48px 40px;
+      margin: 48px 0;
+      text-align: center;
+    }
+
+    .pink-hope-icon {
+      font-size: 28px;
+      color: var(--rose);
+      margin-bottom: 16px;
+      opacity: 0.8;
+    }
+
+    .pink-hope-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .pink-hope-sub {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .pink-hope p {
+      font-size: 14px !important;
+      color: var(--ink-mid) !important;
+      max-width: 480px;
+      margin: 0 auto 16px !important;
+      line-height: 1.75 !important;
+    }
+
+    .pink-hope p:last-child { margin-bottom: 0 !important; }
+
+    /* Closing */
+    .closing {
+      margin-top: 64px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .signature {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 28px;
+      display: block;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .footer-sub { font-size: 11px; color: var(--ink-soft); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-soft); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .article-header { padding: 48px 24px 40px; }
+      .article-body { padding: 40px 24px 72px; }
+      .pink-hope { padding: 32px 24px; }
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Lab Home</a>
+    <a href="index.html#articles">Articles</a>
+    <a href="protocols.html">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <a href="index.html#articles" class="back-link">← Back to Articles</a>
+  <span class="article-tag">Personal Essay</span>
+  <h1 class="article-title">The Heart of Smyrna & Sable</h1>
+  <p class="article-subtitle">On mothers, courage, and why a brand can carry more than a business idea.</p>
+  <div class="article-meta">
+    <span class="meta-author">Ceylan Belin</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">June 2026</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">Personal Essay · Origin</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p class="lead">
+    Every brand has a story. Mine begins not with a strategy, not with a market gap, but with a woman who fought with everything she had — and with the daughter who promised never to forget her.
+  </p>
+
+  <span class="section-title">The Beginning</span>
+  <h2 class="block-title">A Bridge Between Two Cities</h2>
+
+  <p>I live in İzmir — ancient Smyrna — a city layered with history, warmth, and the kind of light that makes everything feel possible. My husband and I fell deeply in love with Belgium during a visit to Brussels. The architecture, the culture, the chocolate, the quiet dignity of Flemish streets. We looked at each other and said: we want to build a life here.</p>
+
+  <p>That feeling planted a seed. If I was going to bridge two worlds — İzmir and Belgium — I wanted to do it with something real. Something that carried meaning beyond commerce. A brand was the right vessel. But what kind of brand?</p>
+
+  <p>The answer came from the heart, not from a brief.</p>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Name</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <span class="section-title">Two Words, Two Worlds</span>
+  <h2 class="block-title">Smyrna & Sable</h2>
+
+  <p><strong>Smyrna</strong> is the ancient name of İzmir. A city that has been a crossroads of civilisations for thousands of years — Greek, Roman, Ottoman, Turkish. To call the brand Smyrna was to honour that layered identity, to wear the history openly.</p>
+
+  <p><strong>Sable</strong> is the first Belgian biscuit I ever tasted. Delicate, sandy, deeply European. One word that held an entire culture in its texture.</p>
+
+  <p>Two words. Two cities. One brand that exists precisely at the intersection — neither fully Turkish, nor fully Belgian, but something that could only emerge from the encounter between them.</p>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Dedication</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <span class="section-title">For Her</span>
+  <h2 class="block-title">The Heart</h2>
+
+  <p>My mother passed away years ago. Cancer took her from me. And in those years since, I have carried her with me in every decision, every project, every morning I chose to keep building instead of stopping.</p>
+
+  <p>When I created Smyrna & Sable, I knew immediately: this brand belongs to her. It is dedicated to her. She is its heart.</p>
+
+  <div class="pull-quote">
+    <p>"I thought about my story. I thought about my heart. My mother fought with everything she had. If I was going to build something, it had to carry that fight forward."</p>
+  </div>
+
+  <p>A brand without soul is just a logo. Smyrna & Sable has a soul — and her name is my mother's.</p>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">Pink Hope</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <div class="pink-hope">
+    <div class="pink-hope-icon">♡</div>
+    <div class="pink-hope-title">Pink Hope</div>
+    <span class="pink-hope-sub">Pink Sable Cookie · For the Fighters</span>
+    <p>Among the six product concepts I created for Smyrna & Sable, one holds a different weight. The Pink Sable — a delicate rose-tinted biscuit inspired by Belgian sablé — is dedicated to those who fight cancer, and to those who have lost someone to it.</p>
+    <p>If Smyrna & Sable were ever to become a real brand, a portion of every Pink Hope sale would go directly to cancer associations — in Belgium, in Turkey, wherever the brand lives. This was never a marketing decision. It was a promise made to a mother who deserved more time.</p>
+  <p><a href="https://www.smyrnaandsable.com/en/our-heart" target="_blank" style="display:inline-block; margin-top:8px; padding:10px 22px; background:#C97A8A; color:#fff; font-size:12px; font-weight:500; letter-spacing:0.06em; transition:background 0.15s;">Discover Pink Hope →</a></p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Method</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <span class="section-title">From a Brand to a Living Laboratory</span>
+  <h2 class="block-title">How It Grew</h2>
+
+  <p>Most professionals build a CV. I built an ecosystem. Smyrna & Sable became the canvas on which I tested everything I know — data architecture, server-side tracking, consent modelling, GDPR-compliant behavioural intelligence.</p>
+
+  <p>The brand has a multilingual e-commerce platform. A strategy lab. A live marketing intelligence system called <strong>Sovereign Core</strong> — running on a Frankfurt server, 24/7, built entirely on a phone with zero budget.</p>
+
+  <p>But none of it would have mattered without a reason. The reason is her.</p>
+
+  <div class="pull-quote">
+    <p>"How many marketing professionals can demonstrate their thinking not through a presentation, but through a working ecosystem? Not with slides — with real infrastructure. Not with claimed expertise — with measurable output."</p>
+  </div>
+
+  <div class="section-break">
+    <div class="section-break-line"></div>
+    <span class="section-break-label">The Mission</span>
+    <div class="section-break-line"></div>
+  </div>
+
+  <span class="section-title">What I Am Looking For</span>
+  <h2 class="block-title">One Organisation. From Day One.</h2>
+
+  <p>I am looking for a single European organisation — in Denmark or the Benelux — where I can apply this thinking to real problems. Not just MarTech expertise or data strategy in isolation. The whole ecosystem.</p>
+
+  <p>When you hire me, Sovereign Core comes with me. From day one.</p>
+
+  <p>And somewhere in the background, quietly, my mother comes too — in the form of a pink biscuit, and a promise I intend to keep.</p>
+
+  <div class="closing">
+    <p>This is the heart of Smyrna & Sable. Not the data. Not the platform. Not the strategy.</p>
+    <p><strong>Her.</strong></p>
+    <span class="signature">— Ceylan Belin, İzmir · June 2026</span>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="index.html">Lab Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
