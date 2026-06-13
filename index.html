@@ -9,8 +9,51 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smyrna & Sable — Lab</title>
-  <meta name="description" content="The technical laboratory where Sovereign Core was built. MarTech strategy, data intelligence, and digital governance by Ceylan Belin.">
+  <title>Smyrna & Sable — Evolving Data Lab | MarTech Strategy & Data Intelligence</title>
+  <meta name="description" content="The technical laboratory of Ceylan Belin — MarTech Strategist. Where Sovereign Core was born. Strategy papers, data intelligence articles, GDPR analytics. İzmir → Copenhagen & Brussels.">
+  <meta name="keywords" content="MarTech strategy, data intelligence, GDPR marketing, server-side analytics, European market entry, consent mode V2, digital governance, Sovereign Core">
+  <meta name="author" content="Ceylan Belin">
+  <meta property="og:title" content="Smyrna & Sable — Evolving Data Lab">
+  <meta property="og:description" content="Where Sovereign Core was born. MarTech strategy, data intelligence, digital governance by Ceylan Belin.">
+  <meta property="og:url" content="https://lab.smyrnaandsable.com">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://lab.smyrnaandsable.com/">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "name": "Smyrna & Sable — Evolving Data Lab",
+    "description": "The technical laboratory of Ceylan Belin — MarTech Strategist building from İzmir, thinking in Copenhagen and Brussels. Where Sovereign Core was born.",
+    "url": "https://lab.smyrnaandsable.com",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Ceylan Belin",
+      "jobTitle": "MarTech Strategist & Data Strategist",
+      "url": "https://linkedin.com/in/ceylan-belin",
+      "sameAs": [
+        "https://linkedin.com/in/ceylan-belin",
+        "https://sovereign.smyrnaandsable.com"
+      ],
+      "knowsAbout": [
+        "Server-side marketing intelligence",
+        "GDPR compliance",
+        "Consent Mode V2",
+        "Google Tag Manager",
+        "Google Analytics 4",
+        "Data strategy",
+        "Carbon tracking CSRD",
+        "Bot filtering",
+        "Behavioral analytics"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "İzmir",
+        "addressCountry": "TR"
+      }
+    }
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +74,6 @@
       --white:    #FFFFFF;
     }
 
-    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
@@ -47,7 +89,6 @@
 
     a { color: inherit; text-decoration: none; }
 
-    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -90,7 +131,6 @@
       color: var(--white);
     }
 
-    /* ── HERO ── */
     .hero {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -99,8 +139,6 @@
       padding: 80px 48px 96px;
       border-bottom: 1px solid var(--border);
     }
-
-    .hero-left {}
 
     .hero-label {
       font-size: 11px;
@@ -119,9 +157,7 @@
       margin-bottom: 24px;
     }
 
-    .hero-title strong {
-      font-weight: 600;
-    }
+    .hero-title strong { font-weight: 600; }
 
     .hero-body {
       font-size: 15px;
@@ -161,9 +197,6 @@
     }
 
     .btn-secondary:hover { border-color: var(--ink-mid); color: var(--ink); }
-
-    /* ── LOG PANEL (hero right) ── */
-    .hero-right {}
 
     .log-panel {
       border: 1px solid var(--border);
@@ -211,9 +244,7 @@
       50% { opacity: 0.3; }
     }
 
-    .log-body {
-      padding: 0;
-    }
+    .log-body { padding: 0; }
 
     .log-row {
       display: grid;
@@ -229,7 +260,6 @@
 
     .log-row:last-child { border-bottom: none; }
     .log-row.visible { opacity: 1; }
-
     .log-row-date { color: var(--ink-soft); font-size: 11px; }
     .log-row-source { color: var(--ink-mid); }
 
@@ -266,7 +296,6 @@
       50% { opacity: 0; }
     }
 
-    /* ── SECTION WRAPPER ── */
     .section {
       padding: 80px 48px;
       border-bottom: 1px solid var(--border);
@@ -292,7 +321,6 @@
 
     .section-title strong { font-weight: 600; }
 
-    /* ── ABOUT ── */
     .about-grid {
       display: grid;
       grid-template-columns: 1fr 2fr;
@@ -304,8 +332,6 @@
       flex-direction: column;
       gap: 32px;
     }
-
-    .stat-item {}
 
     .stat-num {
       font-size: 36px;
@@ -336,7 +362,6 @@
 
     .about-text p + p { margin-top: 16px; }
 
-    /* ── ARTICLES ── */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -354,7 +379,6 @@
     }
 
     .article-card:hover { background: var(--white); }
-
     .article-card.soon { opacity: 0.6; }
     .article-card.soon:hover { background: var(--bg); }
 
@@ -391,10 +415,7 @@
       align-items: center;
     }
 
-    .article-date {
-      font-size: 11px;
-      color: var(--ink-soft);
-    }
+    .article-date { font-size: 11px; color: var(--ink-soft); }
 
     .article-status {
       font-size: 10px;
@@ -406,7 +427,6 @@
       padding: 3px 10px;
     }
 
-    /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -425,17 +445,8 @@
 
     .project-card:hover { background: var(--white); }
 
-    .project-num {
-      font-size: 11px;
-      color: var(--ink-soft);
-      letter-spacing: 0.1em;
-    }
-
-    .project-name {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--ink);
-    }
+    .project-num { font-size: 11px; color: var(--ink-soft); letter-spacing: 0.1em; }
+    .project-name { font-size: 16px; font-weight: 600; color: var(--ink); }
 
     .project-desc {
       font-size: 13px;
@@ -462,7 +473,6 @@
       background: var(--bg-2);
     }
 
-    /* ── SOVEREIGN BRIDGE ── */
     .sovereign-section {
       background: var(--ink);
       padding: 80px 48px;
@@ -521,10 +531,7 @@
       border-color: rgba(250,247,242,0.6);
     }
 
-    .feature-list {
-      display: flex;
-      flex-direction: column;
-    }
+    .feature-list { display: flex; flex-direction: column; }
 
     .feature-row {
       display: grid;
@@ -557,7 +564,6 @@
       line-height: 1.6;
     }
 
-    /* ── FOOTER ── */
     footer {
       padding: 40px 48px;
       display: flex;
@@ -572,15 +578,9 @@
       margin-bottom: 4px;
     }
 
-    .footer-sub {
-      font-size: 11px;
-      color: var(--ink-soft);
-    }
+    .footer-sub { font-size: 11px; color: var(--ink-soft); }
 
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
+    .footer-links { display: flex; gap: 24px; }
 
     .footer-links a {
       font-size: 12px;
@@ -590,7 +590,6 @@
 
     .footer-links a:hover { color: var(--ink); }
 
-    /* ── CONSENT ── */
     #consent-banner {
       position: fixed;
       bottom: 20px;
@@ -651,41 +650,22 @@
 
     .consent-accept:hover { background: var(--ink-mid); }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
       .nav-links { gap: 16px; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 60px 24px 72px;
-        gap: 48px;
-      }
-
+      .hero { grid-template-columns: 1fr; padding: 60px 24px 72px; gap: 48px; }
       .section { padding: 60px 24px; }
-
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       .about-stat-block { flex-direction: row; flex-wrap: wrap; gap: 24px; }
-
       .articles-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
-
       .sovereign-section { padding: 60px 24px; }
       .sovereign-inner { grid-template-columns: 1fr; gap: 48px; }
-
-      footer {
-        flex-direction: column;
-        gap: 24px;
-        align-items: flex-start;
-        padding: 40px 24px;
-      }
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; padding: 40px 24px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
     }
   </style>
 </head>
@@ -693,7 +673,6 @@
 
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MGTFH25T" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- NAV -->
 <nav>
   <div class="nav-links">
     <a href="#articles">Articles</a>
@@ -704,7 +683,6 @@
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div class="hero-label">Smyrna & Sable — Evolving Data Lab</div>
@@ -733,7 +711,6 @@
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="section">
   <span class="section-label">About</span>
   <div class="about-grid">
@@ -744,7 +721,7 @@
         <div class="stat-label">Phases completed</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">1800+</div>
+        <div class="stat-num">2800+</div>
         <div class="stat-divider"></div>
         <div class="stat-label">Signals analyzed</div>
       </div>
@@ -762,7 +739,6 @@
   </div>
 </section>
 
-<!-- ARTICLES -->
 <section class="section" id="articles">
   <span class="section-label">Articles</span>
   <h2 class="section-title"><strong>Lab Writing</strong></h2>
@@ -801,7 +777,6 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section class="section">
   <span class="section-label">Projects</span>
   <h2 class="section-title"><strong>Lab Work</strong></h2>
@@ -843,7 +818,6 @@
   </div>
 </section>
 
-<!-- SOVEREIGN BRIDGE -->
 <section class="sovereign-section">
   <div class="sovereign-inner">
     <div>
@@ -898,7 +872,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <div class="footer-brand">Smyrna & Sable — Lab</div>
@@ -911,7 +884,6 @@
   </div>
 </footer>
 
-<!-- CONSENT BANNER -->
 <div id="consent-banner">
   <div class="consent-title">Privacy & Cookies</div>
   <div class="consent-text">This Lab uses GDPR Consent Mode V2. Analytics are only activated with your permission.</div>
@@ -921,9 +893,7 @@
   </div>
 </div>
 
-<!-- SCRIPTS -->
 <script>
-  // Consent Mode V2
   window.dataLayer = window.dataLayer || [];
   function gtag(){ dataLayer.push(arguments); }
   gtag('consent', 'default', {
@@ -951,7 +921,6 @@
     }
   };
 
-  // Audit log rows
   const logs = [
     { date: "2026-06-09", source: "Automated Weekly Audit", score: 99 },
     { date: "2026-06-02", source: "Automated Weekly Audit", score: 99 },
