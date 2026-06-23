@@ -651,6 +651,128 @@
 
     .consent-accept:hover { background: var(--ink-mid); }
 
+    /* ── FOUNDER ── */
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .founder-left {}
+
+    .founder-role {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      margin-top: 8px;
+      line-height: 1.6;
+    }
+
+    .founder-body {
+      color: var(--ink-mid);
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .founder-body p + p { margin-top: 16px; }
+
+    .founder-links {
+      display: flex;
+      gap: 24px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .founder-links a {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    .founder-links a:hover { color: var(--ink); }
+
+    /* ── SOVEREIGN CTA SECTION ── */
+    .sovereign-cta-section {
+      background: var(--ink);
+      padding: 56px 48px;
+    }
+
+    .sovereign-cta-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .sovereign-cta-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.4);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .sovereign-cta-title {
+      font-size: 32px;
+      font-weight: 300;
+      color: var(--bg);
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    .sovereign-cta-title strong { font-weight: 600; }
+
+    .sovereign-cta-body {
+      font-size: 14px;
+      color: rgba(250,247,242,0.5);
+      line-height: 1.7;
+      max-width: 400px;
+    }
+
+    .sovereign-cta-right {
+      display: flex;
+      gap: 12px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .sovereign-cta-btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      transition: background 0.15s;
+    }
+
+    .sovereign-cta-btn:hover { background: var(--bg-2); }
+
+    .sovereign-cta-btn-ghost {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 1px solid rgba(250,247,242,0.25);
+      color: var(--bg);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: all 0.15s;
+    }
+
+    .sovereign-cta-btn-ghost:hover {
+      border-color: rgba(250,247,242,0.6);
+      background: rgba(250,247,242,0.05);
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 860px) {
       nav { padding: 0 24px; }
@@ -670,6 +792,10 @@
       .articles-grid { grid-template-columns: 1fr; }
       .projects-grid { grid-template-columns: 1fr; }
 
+      .founder-grid { grid-template-columns: 1fr; gap: 32px; }
+      .sovereign-cta-section { padding: 48px 24px; }
+      .sovereign-cta-inner { flex-direction: column; align-items: flex-start; }
+      .sovereign-cta-right { width: 100%; }
       .sovereign-section { padding: 60px 24px; }
       .sovereign-inner { grid-template-columns: 1fr; gap: 48px; }
 
@@ -840,6 +966,41 @@
       </div>
     </a>
 
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section" id="about">
+  <span class="section-label">Founder</span>
+  <div class="founder-grid">
+    <div class="founder-left">
+      <h2 class="section-title"><strong>Ceylan Belin</strong></h2>
+      <p class="founder-role">MarTech Strategist &amp; Data Engineer · Creator of Sovereign Core</p>
+    </div>
+    <div class="founder-body">
+      <p>I hold certifications in GA4, Google Ads Search, Google Ads Measurement, GTM, and Privacy for Agencies &amp; Partners. My background spans B2B sales, corporate marketing, trade fair operations, and digital strategy.</p>
+      <p>I built the Smyrna &amp; Sable brand concept from scratch — and with it, a full ecosystem: <strong>Smyrna &amp; Sable</strong> (the brand), <strong>Smyrna &amp; Sable Shop</strong> (multilingual e-commerce), <strong>Smyrna &amp; Sable Lab</strong> (the strategy laboratory you are reading now), and <strong>Sovereign Core</strong> — a server-side marketing intelligence platform designed governance-first, running 24/7 on EU infrastructure. Five phases completed. Eight modules. Built entirely from a mobile phone, with zero budget.</p>
+      <p>This ecosystem is proof of capability — not a claim. I am looking for a single European organisation in Belgium, Denmark, or the wider Benelux and Nordic region where I can be a 360-degree partner: strategy, data, infrastructure, and governance. Think of me as a Swiss Army knife. When you hire me, Sovereign Core comes with me. From day one.</p>
+      <div class="founder-links">
+        <a href="https://www.linkedin.com/in/ceylan-belin" target="_blank">LinkedIn ↗</a>
+        <a href="mailto:contact@smyrnaandsable.com">contact@smyrnaandsable.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOVEREIGN CTA -->
+<section class="sovereign-cta-section">
+  <div class="sovereign-cta-inner">
+    <div class="sovereign-cta-left">
+      <span class="sovereign-cta-label">Live platform</span>
+      <h2 class="sovereign-cta-title">Enter <strong>Sovereign Core</strong></h2>
+      <p class="sovereign-cta-body">Europe's first server-side marketing intelligence platform. Real traffic. Real data. Running now.</p>
+    </div>
+    <div class="sovereign-cta-right">
+      <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="sovereign-cta-btn">Open Sovereign Core →</a>
+      <a href="https://sovereign.smyrnaandsable.com/demo" target="_blank" class="sovereign-cta-btn-ghost">View Demo</a>
+    </div>
   </div>
 </section>
 
