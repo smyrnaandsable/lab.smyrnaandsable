@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three Weeks of Signal — Smyrna & Sable Lab</title>
+  <meta name="description" content="A case study in marketing intelligence, bot defense and carbon accountability. What SCIE Compare found across three weeks of live data.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:       #FAF7F2;
+      --bg-2:     #F2EDE5;
+      --ink:      #1A1A1A;
+      --ink-mid:  #4A4A4A;
+      --ink-soft: #8A8A8A;
+      --gold:     #B8922A;
+      --green:    #1A6B3A;
+      --red:      #B83232;
+      --orange:   #C45E1A;
+      --border:   #E0D9CF;
+      --white:    #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 48px;
+      height: 60px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--ink-soft);
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+
+    .nav-links a.nav-sovereign {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 5px 14px;
+      transition: all 0.15s;
+    }
+
+    .nav-links a.nav-sovereign:hover {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    /* ── ARTICLE HEADER ── */
+    .article-header {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 48px 56px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--ink-soft);
+      margin-bottom: 36px;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover { color: var(--ink); }
+
+    .article-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .article-title {
+      font-size: clamp(26px, 4vw, 42px);
+      font-weight: 600;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .article-deck {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--ink-mid);
+      line-height: 1.65;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+
+    .article-meta {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .meta-author { font-size: 13px; font-weight: 500; color: var(--ink); }
+    .meta-date   { font-size: 12px; color: var(--ink-soft); }
+    .meta-divider { width: 1px; height: 14px; background: var(--border); }
+
+    /* ── ARTICLE BODY ── */
+    .article-body {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 56px 48px 96px;
+    }
+
+    .article-body p {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .article-body p:last-child { margin-bottom: 0; }
+    .article-body strong { color: var(--ink); font-weight: 600; }
+
+    /* Section heading */
+    .section-break {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 52px 0 28px;
+    }
+
+    .section-break-line { flex-grow: 1; height: 1px; background: var(--border); }
+
+    .section-heading {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: 20px;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 4px 0 4px 24px;
+      margin: 40px 0;
+    }
+
+    .pull-quote p {
+      font-size: 18px !important;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink) !important;
+      line-height: 1.6 !important;
+      margin-bottom: 0 !important;
+    }
+
+    /* Screenshot */
+    .screenshot-wrap {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .screenshot-label {
+      padding: 10px 16px;
+      background: var(--bg-2);
+      border-bottom: 1px solid var(--border);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      display: block;
+      max-height: 480px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    /* Signal grid */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin: 32px 0;
+    }
+
+    .signal-cell {
+      background: var(--white);
+      padding: 20px;
+    }
+
+    .signal-cell-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .signal-cell-label.new       { color: var(--red); }
+    .signal-cell-label.resolved  { color: var(--green); }
+    .signal-cell-label.persistent{ color: var(--orange); }
+
+    .signal-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      margin: 3px 3px 3px 0;
+      letter-spacing: 0.06em;
+    }
+
+    .signal-tag.new        { background: #FDEAEA; color: var(--red); }
+    .signal-tag.resolved   { background: #EAF5EE; color: var(--green); }
+    .signal-tag.persistent { background: #FEF3E8; color: var(--orange); }
+
+    /* Recommendation cards */
+    .rec-card {
+      border-left: 3px solid var(--orange);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--orange);
+      padding: 24px 28px;
+      margin: 16px 0;
+    }
+
+    .rec-card.high { border-left-color: var(--red); }
+    .rec-card.review { border-left-color: var(--orange); }
+
+    .rec-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .rec-card-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .rec-badge {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .rec-badge.high   { background: var(--red); color: var(--white); }
+    .rec-badge.review { background: var(--orange); color: var(--white); }
+
+    .rec-finding {
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-soft);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .rec-action {
+      font-size: 13px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    .rec-footer {
+      display: flex;
+      gap: 20px;
+      margin-top: 12px;
+      font-size: 11px;
+      color: var(--ink-soft);
+    }
+
+    .rec-footer-flag { color: var(--gold); font-weight: 500; }
+
+    /* Governance box */
+    .governance-box {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 28px 32px;
+      margin: 40px 0;
+    }
+
+    .governance-box-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .governance-box p {
+      font-size: 13px !important;
+      color: var(--ink-mid) !important;
+      margin-bottom: 10px !important;
+      line-height: 1.7 !important;
+    }
+
+    .governance-box p:last-child { margin-bottom: 0 !important; }
+
+    /* Founder note */
+    .founder-note {
+      background: var(--ink);
+      padding: 48px;
+      margin-top: 56px;
+      text-align: center;
+    }
+
+    .founder-note-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.4);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .founder-note p {
+      font-size: 16px !important;
+      color: rgba(250,247,242,0.75) !important;
+      line-height: 1.85 !important;
+      max-width: 520px;
+      margin: 0 auto 24px !important;
+    }
+
+    .founder-note strong { color: var(--bg) !important; font-weight: 600; }
+
+    .founder-note-sig {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--gold);
+      margin-top: 24px;
+      display: block;
+    }
+
+    .btn-light {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 1px solid rgba(250,247,242,0.25);
+      color: var(--bg);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: all 0.15s;
+      margin-top: 8px;
+    }
+
+    .btn-light:hover {
+      background: rgba(250,247,242,0.08);
+      border-color: rgba(250,247,242,0.6);
+    }
+
+    /* Transparency note */
+    .transparency-note {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.75;
+    }
+
+    .transparency-note a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-brand { font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .footer-sub { font-size: 11px; color: var(--ink-soft); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 12px; color: var(--ink-soft); transition: color 0.15s; }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .article-header { padding: 48px 24px 40px; }
+      .article-body { padding: 40px 24px 72px; }
+      .signal-grid { grid-template-columns: 1fr; }
+      .founder-note { padding: 36px 24px; }
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="index.html">Lab Home</a>
+    <a href="index.html#articles">Articles</a>
+    <a href="protocols.html">Protocols</a>
+    <a href="data-strategy.html">Strategy</a>
+    <a href="kaggle.html">Kaggle</a>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="nav-sovereign">Sovereign Core ↗</a>
+  </div>
+</nav>
+
+<!-- ARTICLE HEADER -->
+<div class="article-header">
+  <a href="index.html#articles" class="back-link">← Back to Articles</a>
+  <span class="article-tag">SCIE · Case Study · Intelligence</span>
+  <h1 class="article-title">Three Weeks of Signal — What the Data Revealed</h1>
+  <p class="article-deck">A case study in marketing intelligence, bot defense and carbon accountability — using SCIE Compare, Sovereign Core's internal AI comparison engine.</p>
+  <div class="article-meta">
+    <span class="meta-author">Ceylan Belin</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">June 2026</span>
+    <div class="meta-divider"></div>
+    <span class="meta-date">MarTech · SCIE · Governance</span>
+  </div>
+</div>
+
+<!-- ARTICLE BODY -->
+<div class="article-body">
+
+  <p>Traffic looked healthy. Conversions didn't follow. The question wasn't whether something was wrong — it was what, exactly, and where.</p>
+
+  <p>A Belgian e-commerce brand importing artisan products from İzmir — figs, olive oil, specialty pastries — had been running paid campaigns across three consecutive weeks. Margins are tight, as they are for most specialty importers. Every euro of ad spend matters. They turned to Sovereign Core.</p>
+
+  <p>We fed three weeks of operational data into <strong>SCIE Compare</strong> — Sovereign Core's internal AI comparison engine. No external models. No third-party data sharing. Everything within EU infrastructure.</p>
+
+  <div class="screenshot-wrap">
+    <div class="screenshot-label">Live platform — SCIE Compare // Report Upload Interface</div>
+    <img src="scie-screenshot-0.jpeg" alt="SCIE Compare upload interface — three weekly JSON reports loaded in chronological order, ready for comparison">
+  </div>
+
+  <div class="section-break"><div class="section-break-line"></div></div>
+
+  <h2 class="section-heading">The Intelligence Score</h2>
+
+  <p>SCIE's intelligence score moved from 125 to 215 across the comparison period — an increase of 90 points. The direction: worsening. But the detail matters more than the number.</p>
+
+  <div class="screenshot-wrap">
+    <div class="screenshot-label">Live output — SCIE Compare // Intelligence Score Trend</div>
+    <img src="scie-screenshot-1.png" alt="SCIE Compare showing Intelligence Score Trend: 125 on 2026-06-08, 100 on 2026-06-15, 215 on 2026-06-22 — all CRITICAL">
+  </div>
+
+  <div class="section-break"><div class="section-break-line"></div></div>
+
+  <h2 class="section-heading">What Changed — Signal by Signal</h2>
+
+  <div class="signal-grid">
+    <div class="signal-cell">
+      <span class="signal-cell-label new">New signals</span>
+      <span class="signal-tag new">BOT_SPIKE</span>
+      <span class="signal-tag new">STOCK_OUT</span>
+      <span class="signal-tag new">PRICE_DISADVANTAGE</span>
+    </div>
+    <div class="signal-cell">
+      <span class="signal-cell-label resolved">Resolved</span>
+      <span class="signal-tag resolved">PRICE_ADVANTAGE</span>
+      <span class="signal-tag resolved">STOCK_OPPORTUNITY</span>
+    </div>
+    <div class="signal-cell">
+      <span class="signal-cell-label persistent">Persistent</span>
+      <span class="signal-tag persistent">BLOCK_RATE_CRITICAL</span>
+      <span class="signal-tag persistent">CARBON_HIGH</span>
+      <span class="signal-tag persistent">ANOMALY_PRESENT</span>
+      <span class="signal-tag persistent">STOCK_CRITICAL</span>
+    </div>
+  </div>
+
+  <div class="screenshot-wrap">
+    <div class="screenshot-label">Live output — SCIE Compare // Signal Changes &amp; Recommendations</div>
+    <img src="scie-screenshot-2.png" alt="SCIE Compare showing signal changes: new, resolved, and persistent signals with color-coded recommendations">
+  </div>
+
+  <div class="section-break"><div class="section-break-line"></div></div>
+
+  <h2 class="section-heading">SCIE's Recommendations</h2>
+
+  <div class="rec-card high">
+    <div class="rec-card-header">
+      <div class="rec-card-title">Bot Defense — Persistent Pattern</div>
+      <span class="rec-badge high">High Priority</span>
+    </div>
+    <div class="rec-finding">Block rate has remained critically high across all 3 weeks analysed. This is not a spike — it is a structural traffic quality issue.</div>
+    <div class="rec-action">Investigate traffic acquisition sources at campaign level. A persistent block rate above 30% strongly suggests one or more channels are consistently delivering low-quality traffic. Pause and audit those channels before resuming spend.</div>
+    <div class="rec-footer">
+      <span>⏱ At your team's next campaign review</span>
+      <span class="rec-footer-flag">⚑ Final decision: yours</span>
+    </div>
+  </div>
+
+  <div class="rec-card review">
+    <div class="rec-card-header">
+      <div class="rec-card-title">Carbon Intelligence — Ongoing Cost</div>
+      <span class="rec-badge review">Review</span>
+    </div>
+    <div class="rec-finding">Carbon cost of invalid traffic has remained elevated across the entire comparison period. Cumulative CO₂ impact is building week on week.</div>
+    <div class="rec-action">Include this trend in your next CSRD Scope 3 digital emissions report. Resolving bot traffic will simultaneously reduce carbon cost — these are the same intervention.</div>
+    <div class="rec-footer">
+      <span>⏱ Next ESG reporting cycle</span>
+      <span class="rec-footer-flag">⚑ Final decision: yours</span>
+    </div>
+  </div>
+
+  <div class="rec-card high">
+    <div class="rec-card-header">
+      <div class="rec-card-title">Commerce Intelligence — Recurring Stock Pressure</div>
+      <span class="rec-badge high">High Priority</span>
+    </div>
+    <div class="rec-finding">Critical stock levels have persisted across multiple reporting periods. This is a supply chain pattern, not a one-off event.</div>
+    <div class="rec-action">Review reorder quantities and supplier lead times for affected products. Ad campaign pausing is a short-term fix — the structural inventory issue requires a supply-side response.</div>
+    <div class="rec-footer">
+      <span>⏱ As soon as possible — systemic issue</span>
+      <span class="rec-footer-flag">⚑ Final decision: yours</span>
+    </div>
+  </div>
+
+  <div class="pull-quote">
+    <p>"One action. Three outcomes. Resolving the bot traffic problem simultaneously protects ad spend, cleans the signal, and reduces carbon cost."</p>
+  </div>
+
+  <div class="section-break"><div class="section-break-line"></div></div>
+
+  <h2 class="section-heading">The Governance Layer</h2>
+
+  <p>Every recommendation in this report carries two notes: <strong>"Final decision: yours"</strong> and <strong>"SCIE never acts autonomously."</strong> This is not a disclaimer. It is a design principle.</p>
+
+  <div class="governance-box">
+    <span class="governance-box-label">Transparency &amp; Governance</span>
+    <p>SCIE is an advisory engine — it surfaces patterns, flags anomalies, and suggests interventions. The decision about what to act on, when, and how belongs entirely to the organisation using it.</p>
+    <p>Every signal, every recommendation, every comparison is logged in the audit trail with full traceability. You can view, export or delete any entry at any time.</p>
+    <p>SCIE runs entirely within EU infrastructure. No data is shared with external AI services.</p>
+  </div>
+
+  <div class="section-break"><div class="section-break-line"></div></div>
+
+  <h2 class="section-heading">What Three Weeks Revealed</h2>
+
+  <p>The hidden cost wasn't invisible — it was unmeasured. Bot traffic eroding ad budget. Carbon accumulating silently. Stock pressure building without a campaign pause. Price disadvantage appearing unnoticed between reporting cycles.</p>
+
+  <p>SCIE Compare doesn't replace the marketing team. It gives them something to work with: a structured, auditable, weekly picture of what the data is actually saying — so the humans in the room can make better decisions.</p>
+
+  <div class="founder-note">
+    <span class="founder-note-label">A note from the founder</span>
+    <p>I built this system <strong>on a phone</strong>, with <strong>zero budget</strong>, <strong>alone</strong>, from <strong>İzmir</strong>.</p>
+    <p>SCIE Compare, the signal detection layer, the governance architecture, the audit trail — every line of code is mine. Sovereign Core is not a portfolio piece. It is a working system, running now, built on EU infrastructure.</p>
+    <p>Sovereign Core and I are waiting to join the right team in Benelux or the Nordics. If data governance matters to your organisation — I would like to talk.</p>
+    <span class="founder-note-sig">— Ceylan Belin, İzmir · June 2026</span>
+    <br><br>
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank" class="btn-light">Enter Sovereign Core →</a>
+  </div>
+
+  <div class="transparency-note">
+    <strong>A note on transparency.</strong> The data used in this case study was prepared as mock input for SCIE Compare. Weekly signals, metrics and figures are simulated. The brand and scenario are fictional — inspired by the Smyrna & Sable İzmir–Belgium gastronomic concept. The SCIE analysis, signal detection, recommendations and governance outputs are real — generated by Sovereign Core's live system in response to mock data. This case study demonstrates what SCIE Compare does, not what a specific client experienced.<br><br>
+    <a href="https://sovereign.smyrnaandsable.com">sovereign.smyrnaandsable.com</a> &nbsp;·&nbsp;
+    <a href="https://lab.smyrnaandsable.com">lab.smyrnaandsable.com</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/ceylan-belin" target="_blank">linkedin.com/in/ceylan-belin</a> &nbsp;·&nbsp;
+    contact@smyrnaandsable.com
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Smyrna & Sable — Lab</div>
+    <div class="footer-sub">İzmir → Copenhagen / Brussels &nbsp;·&nbsp; MarTech · Data Strategy · Digital Governance</div>
+  </div>
+  <div class="footer-links">
+    <a href="https://sovereign.smyrnaandsable.com" target="_blank">Sovereign Core</a>
+    <a href="https://smyrnaandsable.com" target="_blank">Main Site</a>
+    <a href="index.html">Lab Home</a>
+  </div>
+</footer>
+
+</body>
+</html>
